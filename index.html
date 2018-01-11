@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>聚惠买商城</title>
+		<link href="css/com.css" type="text/css" rel="stylesheet" />
+		<link href="css/ht_com.css" type="text/css" rel="stylesheet" />
+		<link href="css/index.css" type="text/css" rel="stylesheet" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<script src="libs/jquery-1.11.3.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/all_list.js"></script>
+		<script src="libs/jquery.cookie.js"></script>
+		<script src="js/r_text.js"></script>
+		<script type="text/javascript" src="js/shopping_car.js" ></script>
+		<script>
+		
+		$(function() {
+			//顶部导入
+			$(".sitehead").load("text.html  #site-nav", function() {
+		
+				//顶部导航菜单设置
+				$(".sn-menu li").mouseover(function() {
+					//alert(1)   cs ww
+					//console.log($(this).find("b"))
+					$(this).find("b").stop().animate({
+						"background-position-y": "-10px", //改变b标签的背景
+					})
+		
+					$(this).find(".menu-bd").css("display", "block");
+				})
+				$(".sn-menu li").mouseout(function() {
+		
+						$(this).find("b").stop().animate({
+							"background-position-y": "0px",
+						})
+						$(this).find(".menu-bd").css("display", "none");
+					}) //  
+					
+					
+					var em0 = $.cookie("UserName");
+				
+					$(".em0").html(em0);
+					//alert($(".em0").html())
+					
+				});
+		
+			
+			//头部导入
+			 	$("#head").load("text.html #header");
+			 	$("#headnav").load("text.html .globa-nav");
+				$("#fenlei").load("text.html .w0",function(){
+					
+ 			 		$(".all_cat a").attr("href","goods_list.html");
+ 			 		
+					all_cat();
+					
+				});
+			
+			
+			//底部导入
+				$("#dibu").load("text.html .site-footer");
+				
+			//左部楼梯导航的显示	
+
+			$(window).scroll(function () {
+				
+				if ($(window).scrollTop() > $('.flootList').eq(0).offset().top) {
+					
+					$(".fsFixedTopContent").css("display","block");
+					
+					var d = parseInt(($(window).scrollTop()-900)/705);
+					$(".fsFixedTop .smooth .fs-name").css("display","none");
+					$(".fsFixedTop .smooth .fs-name").eq(d).css("display","block");
+					
+				}else{
+					$(".fsFixedTopContent").css("display","none");
+				}
+			});
+			
+			//右侧栏导入
+			$(".car_nav").load("text.html .sidebar-nav",function(){
+
+				r_nav();
+				sc_car();
+				shmag();
+			});
+				
+		})
+		</script>
+	</head>
+
+	<body>
+		<!--
+        	作者：张亚儒
+        	时间：2016-09-10
+        	描述：聚惠买商城
+        -->
+		<div class="sitehead"></div>
+		<div id="head"></div>
+		<div id="headnav"></div>
+		<div id="fenlei"></div>
+		
+	
+		<!--轮播图-->
+      	<div class="home-focus-loyout">
+      		<ul class="full-screen-slides">
+	      		<li style="background: url(img/banner1.png) no-repeat center;display: block;"><a href="#"></a></li>
+	      		<li style="background: url(img/banner2.jpg) no-repeat center;"><a href="#"></a></li>
+	      		<li style="background: url(img/banner3.jpg.png) no-repeat center;"><a href="#"></a></li>
+	      		<li style="background: url(img/banner4.jpg) no-repeat center;"><a href="#"></a></li>
+	      		<li style="background: url(img/banner5.jpg) no-repeat center;"><a href="#"></a></li>
+	      		<li style="background: url(img/banner6.jpg) no-repeat center;"><a href="#"></a></li>
+	      		<li style="background: url(img/banner7.jpg) no-repeat center;"><a href="#"></a></li>
+      		</ul>
+      		<ul class="full-screen-slides-pagination">
+      			<li><a>1</a></li>
+      			<li><a>2</a></li>
+      			<li><a>3</a></li>
+      			<li><a>4</a></li>
+      			<li><a>5</a></li>
+      			<li><a>6</a></li>
+      			<li><a>7</a></li>   			
+      		</ul>
+      		<div class="jfocus-trigeminy">
+      			<div class="tm-chaoshi-markets">
+      				<a href="#"><img src="img/1437497920196427586.jpg"/></a>
+      				<a href="#"><img src="img/1437497944523762531.jpg"/></a>
+      				<a href="#"><img src="img/1437497969836917729.jpg"/></a>
+      			</div>
+      		</div>
+      		<div class="right-sidebar">
+      			<div class="order_type">
+      				<div class="title">四种方式下订单</div>
+      				<ul>
+      					<li><i>1</i>访问网站直接下订单</li>
+      					<li>
+      						<i>2</i>直接拨打电话
+      						<p class="wei_shop">如果在您不方便上网的时候</p>
+      						<p class="phone">400-0310-707</p>
+      					</li>
+      					<li>
+      						<i>3</i>支持微商城下订单
+      						<div class="wei_shop">
+      							<p>关注微商城</p>
+      							<img src="img/weixin.jpg.png"/>
+      						</div>
+      					</li>
+      					<li><i>4</i>支持手机APP下订单</li>
+      				</ul>
+      			</div>
+      			<div class="proclamation">
+      				<ul class="tabs-nav">
+      					<li class="tabs-selected">
+      						<h3>招商入驻</h3>
+      					</li>
+      					<li class=""><h3>商城公告</h3></li>
+      				</ul>
+      				<div class="tabs-panel" >
+      					<a href="#" class="store-join-btn" title="申请商家入驻；已提交申请，可查看当前审核状态。"></a>
+      					<a href="#" class="store-join-help"><i class="icon-cog"></i>登录商家管理中心</a>
+      				</div>
+      				<div class="tabs-panel" style="display: none;">
+      					<ul class="mall-news">
+      						<li>
+      							<i></i><a href="#">聚惠买商城上线试运营新闻发布会暨... </a>
+      						</li>
+      						<li>
+      							<i></i><a href="#">一分钟了解聚惠买商城 </a>
+      						</li>
+      						<li>
+      							<i></i><a href="#">热烈庆祝启信灯饰广场成功入驻聚惠...  </a>
+      						</li>
+      						<li>
+      							<i></i><a href="#">【线下】好儿女易购——便捷 优质...  </a>
+      						</li>
+      						<li>
+      							<i></i><a href="#">海归硕士返乡养鸡网上遭抢购 今年... </a>
+      						</li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+		
+		<!--品牌logo-->
+	<div class="wrapper" style="padding-bottom:20px;">
+	  <div class="loadFourth on" style="height:350px">
+		<div class="Lay_2 mt10 contentThree">
+			<div class="titieBox clearfix">
+				<ul class="clearfix">
+					<li class="first on">白酒品牌</li>
+					<li class="">地方名酒</li>
+					<li class="">红洋酒品牌</li>
+				</ul>
+			</div>
+			<div class="titleSlider"><b></b></div>
+			<div class="logoBox">
+				<div style="display: block;" class="optionsID">
+					<span class="prevPage arrow newIndexIcon"></span>
+					<span class="nextPage arrow newIndexIcon"></span>
+				</div>
+				<div class="logoAll clearfix" style="display: block;">
+					<div class="logoFirst">
+						<div class="logoFirstbd clearfix" style="margin-left: 0px;">
+							<ul class="clearfix">
+								<li>
+									<a><img src="img/1450747557149339013.jpg" width="280" height="80" alt="泸州老窖官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495095040014292.jpg" width="280" height="80" alt="北大仓官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495209486986888.jpg" width="280" height="80" alt="枝江酒官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495272782115178.jpg" width="280" height="80" alt="五粮液官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495325286608231.jpg" width="280" height="80" alt="今世缘官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495384686130361.jpg" width="280" height="80" alt="扳倒井官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495488942571449.jpg" width="280" height="80" alt="伊力特官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495550367178243.jpg" width="280" height="80" alt="酒鬼酒官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495587613306777.jpg" width="280" height="80" alt="剑南春官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495651715511524.jpg" width="280" height="80" alt="经典玉液官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495777494839060.jpg" width="280" height="80" alt="厚工坊官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495846406043546.jpg" width="280" height="80" alt="杜康官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495885110749360.jpg" width="280" height="80" alt="金六福官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451495961461583329.jpg" width="280" height="80" alt="杏花酒家官方旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496028508730162.jpg" width="280" height="80" alt="迎驾贡酒官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496114281682455.jpg" width="280" height="80" alt="水井坊官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496153977939039.jpg" width="280" height="80" alt="红双喜官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496236332661630.jpg" width="280" height="80" alt="茅台白金酒旗舰店"></a>
+								</li>
+							</ul>
+							<ul class="clearfix">
+								<li>
+									<a><img src="img/1451496265186291427.jpg" width="280" height="80" alt="一品坊官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496295152745194.jpg" width="280" height="80" alt="王祖烧坊官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496327047729700.jpg" width="280" height="80" alt="衡水老白干官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496362059401048.jpg" width="280" height="80" alt="伊力王官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496423919679691.jpg" width="280" height="80" alt="贵州五星官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496709268052114.jpg" width="280" height="80" alt="兰陵官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496836405064725.jpg" width="280" height="80" alt="宝丰官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451496900570511966.jpg" width="280" height="80" alt="黄金酒官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451497035667396094.jpg" width="280" height="80" alt="黔茅古酱官方品牌旗舰店"></a>
+								</li>
+								<li>
+									<a><img src="img/1451497108275829780.jpg" width="280" height="80" alt="丛台官方品牌旗舰店"></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="logoAll clearfix" style="display: none;">
+					<ul class="clearfix">
+						<li>
+							<a><img src="img/1451497186421666688.jpg" width="280" height="80" alt="景芝官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497223917722138.jpg" width="280" height="80" alt="九暹酒官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497253288832174.jpg" width="280" height="80" alt="汾酒集团祥和官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497298858119571.jpg" width="280" height="80" alt="汤沟官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497402684165520.jpg" width="280" height="80" alt="古越龙山品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497433075827651.jpg" width="280" height="80" alt="舍得官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497509179271103.jpg" width="280" height="80" alt="中酿酒鬼酒品牌官方旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497535660593013.jpg" width="280" height="80" alt="天地缘官方旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497562230131840.jpg" width="280" height="80" alt="董酒官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497592057926489.jpg" width="280" height="80" alt="古贝春官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497617178893953.jpg" width="280" height="80" alt="陈坛老窖官方品牌旗舰店"></a>
+						</li>
+					</ul>
+				</div>
+				<div class="logoAll clearfix" style="display: none;">
+					<ul class="clearfix">
+						<li>
+							<a><img src="img/1451497732149623619.jpg" width="280" height="80" alt="珠海全达官方旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497769570716463.jpg" width="280" height="80" alt="俊景洋酒城品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497799692499504.jpg" width="280" height="80" alt="百加得官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497826961053008.jpg" width="280" height="80" alt="真露官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497854637638189.jpg" width="280" height="80" alt="詹姆士官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497881150724112.jpg" width="280" height="80" alt="黄尾袋鼠官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497915240587837.jpg" width="280" height="80" alt="卡斯特官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497939484561766.jpg" width="280" height="80" alt="茅台葡萄酒官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497963259728614.jpg" width="280" height="80" alt="丁闻品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451497987991959312.jpg" width="280" height="80" alt="御马酒官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451498013308573805.jpg" width="280" height="80" alt="盛世夏都官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451498061970029302.jpg" width="280" height="80" alt="王朝国际品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451498086885819410.jpg" width="280" height="80" alt="越千年品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451498157265899354.jpg" width="280" height="80" alt="尼雅官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451498183437354842.jpg" width="280" height="80" alt="玛丽官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451498213544993684.jpg" width="280" height="80" alt="祁连传奇官方品牌旗舰店"></a>
+						</li>
+						<li>
+							<a><img src="img/1451498240646935880.jpg" width="280" height="80"></a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		
+		<!--热门店铺-->
+		<div class="fp-brand-rec main-container">
+			<a class="brand-title">热门店铺</a>
+			<div class="brand-content clearfix">
+				<div class="module">
+					<a href="#"><img src="img/1437443964590321726.jpg"/></a>
+				</div>
+				<div class="brand-rec-slide">
+					<ul class="brand-rec-content clearfix">
+						<li class="brand-rec-pannel hidden">
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+							<a><img src="img/ad.jpg"/></a>
+						</li>
+					</ul>
+				</div>
+				<div class="brand-today-b">
+					<a><img src="img/1459096523037748007.png"/></a>
+				</div>
+			</div>
+		</div>
+		
+		<!--限时折扣-->	
+		<div class="home-sale-layout wrapper">
+			<div class="left-layout">
+				<ul class="tabs-nav">
+					<li class="tabs-selected">
+						<i class="arrow"></i>
+						<h3>疯狂抢购</h3>
+					</li>
+					<li>
+						<i class="arrow"></i>
+						<h3>热销排行</h3>
+					</li>
+					<li>
+						<i class="arrow"></i>
+						<h3>商城热卖</h3>
+					</li>
+					<li>
+						<i class="arrow"></i>
+						<h3>商城推荐</h3>
+					</li>
+					<li>
+						<i class="arrow"></i>
+						<h3>新品上市</h3>
+					</li>
+				</ul>
+				<div class="tabs-panel sale-goods-list" style="display: block;">
+					<ul>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>2016春秋季新款韩版胖MM大码女装宽松中长款假...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/34_thumb_G_1452797720522.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>78.0</em></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list">
+					<ul>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>康婷瑞倪维儿活肤营养水80ml</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/2708_thumb_G_1458596238415.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>97.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>Huawei/华为 荣耀6 Plus高配版 移动...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/147_thumb_G_1452897883992.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>1899.0</em></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list">
+					<ul>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>雅鹿全棉四件套纯棉套件床上用品 回忆蓝 1.8米...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/140_thumb_G_1437528915082.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>333.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>Xiaomi/小米 红米手机3 红米3 全网通手...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/175_thumb_G_1452904659940.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>750.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>小米Xiaomi/小米 小米Note 顶配版全网...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/143_thumb_G_1452901097844.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>2699.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>Huawei/华为 荣耀6 Plus高配版 移动...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/147_thumb_G_1452897883992.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>1899.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>丛台浓香型白酒 41度千禧福500mL</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/233_thumb_G_1450043024209.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>59.0</em></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list" >
+					<ul>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>优雅100 经典设计款全棉斜纹印花四件套</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/139_thumb_G_1452881454307.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>189.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>LOVO 罗莱家纺出品全棉斜纹床品套件四件套 兔...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/137_thumb_G_1452880999258.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>399.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>雅鹿全棉四件套纯棉套件床上用品 回忆蓝 1.8米...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/140_thumb_G_1437528915082.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>333.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>Xiaomi/小米 红米手机3 红米3 全网通手...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/175_thumb_G_1452904659940.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>750.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>小米Xiaomi/小米 小米Note 顶配版全网...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/143_thumb_G_1452901097844.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>2699.0</em></dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="tabs-panel sale-goods-list">
+					<ul>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>优雅100 经典设计款全棉斜纹印花四件套</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/139_thumb_G_1452881454307.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>189.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>LOVO 罗莱家纺出品全棉斜纹床品套件四件套 兔...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/137_thumb_G_1452880999258.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>399.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>雅鹿全棉四件套纯棉套件床上用品 回忆蓝 1.8米...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/140_thumb_G_1437528915082.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>333.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>现货带票【送钢化膜皮套】Huawei/华为 P8...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/444_thumb_G_1433286895510.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>3980.0</em></dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="goods-name">
+									<a>Xiaomi/小米 红米手机3 红米3 全网通手...</a>
+								</dt>
+								<dd class="goods-thumb">
+									<a><img src="img/175_thumb_G_1452904659940.jpg"/></a>
+								</dd>
+								<dd class="goods-price">商城价：<em>750.0</em></dd>
+							</dl>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+			<div class="right-sidebar">
+				<div class="title">
+					<h3>
+						<i></i>
+						限时折扣
+					</h3>
+				</div>
+				<div class="sale-discount">
+					<div class="arrow pre" style="opacity: 0;  background-position: -105px 0px;"></div>
+					<div class="arrow next" style="opacity: 0; background-position: -126px 0px;"></div>
+				</div>
+			</div>
+		</div>	
+			
+			
+		<!--楼梯列表-->
+		<div class="flootList">
+			<div class="w0 floor">
+				<div class="floor02 clearfix">
+					<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-one">
+						<div class="m-floor">
+							<div class="header left_floor">
+								<h2><span>1F</span><a href="#">食品生鲜</a></h2>
+								<div class="recommend">
+									<div class="words">
+										<a href="#"><b>芒果桃李</b></a>
+										<a href="#"><b>凤梨蓝莓</b></a>
+										<a href="#"><b>口香糖</b></a>
+										<a href="#"><b>棒棒糖</b></a>
+										<a href="#"><b>软糖</b></a>
+										<a href="#"><b>奶糖</b></a>
+										<a href="#"><b>果冻</b></a>
+										<a href="#"><b>杏仁</b></a>
+										<a href="#"><b>红枣</b></a>
+									</div>
+									<a href="#" class="banner">
+										<img src="img/1437498557902889630.jpg" style="display:inline;" width="240" height="297"/>
+									</a>
+								</div>
+							</div>
+							<div class="content mid_floor">
+								<div class="goods">
+									<div class="middle-layout">
+										<ul class="tabs-nav">
+											<li class="tabs-selected"><h3>精挑细选</h3></li>
+											<li><h3>保健食品</h3></li>
+											<li><h3>进口水果</h3></li>
+											<li><h3>糖果巧克力</h3></li>
+										</ul>
+										<div class="tabs-panel">
+											<div id="li_2687" class="j_ItemInfo">
+												<div class="wrap">
+													<a href="#">
+														<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+													</a>
+													<p class="title">
+														<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+													</p>
+													<p class="o-price">148.2</p>
+													<p class="price">
+														<span class="j_CurPrice">148.2</span>
+													</p>
+													<a class="j_AddCart"></a>
+													<i class="product-mask"></i>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							<div class="promo">
+									<a class="j_ItemInfo" href="#"><img src="img/1437498774407314769.jpg"/></a>
+									<a class="j_ItemInfo" href="#"><img src="img/1437498791542281098.jpg"/></a>
+							</div>
+							<div class="promo_brand">
+								<div class="recommend-brand">
+									<div class="gw_con">
+										<div class="anli">
+											<div class="anli_con">
+												<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+													<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="w0 floor">
+				<div class="floor02 clearfix">
+					<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-two">
+						<div class="m-floor">
+							<div class="header left_floor">
+								<h2><span>2F</span><a href="#">服装服饰</a></h2>
+								<div class="recommend">
+									<div class="words">
+										<a href="#"><b>连衣裙</b></a>
+										<a href="#"><b>连体裤</b></a>
+										<a href="#"><b>短外套</b></a>
+										<a href="#"><b>风衣</b></a>
+										<a href="#"><b>POLO衫</b></a>
+										<a href="#"><b>迷彩裤</b></a>
+										<a href="#"><b>登山鞋</b></a>
+										<a href="#"><b>高跟鞋</b></a>
+										<a href="#"><b>拉杆箱</b></a>
+									</div>
+									<a href="#" class="banner">
+										<img src="img/1437498339486690622.jpg" style="display:inline;" width="240" height="297"/>
+									</a>
+								</div>
+							</div>
+							<div class="content mid_floor">
+								<div class="goods">
+									<div class="middle-layout">
+										<ul class="tabs-nav">
+											<li class="tabs-selected"><h3>精挑细选</h3></li>
+											<li><h3>女装馆</h3></li>
+											<li><h3>T恤</h3></li>
+											<li><h3>中长款半身裙</h3></li>
+										</ul>
+										<div class="tabs-panel">
+											<div id="li_2687" class="j_ItemInfo">
+												<div class="wrap">
+													<a href="#">
+														<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+													</a>
+													<p class="title">
+														<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+													</p>
+													<p class="o-price">148.2</p>
+													<p class="price">
+														<span class="j_CurPrice">148.2</span>
+													</p>
+													<a class="j_AddCart"></a>
+													<i class="product-mask"></i>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="promo">
+								<a class="j_ItemInfo" href="#"><img src="img/1437498928420613316.jpg"/></a>
+								<a class="j_ItemInfo" href="#"><img src="img/1437498984255336373.jpg"/></a>
+							</div>
+							<div class="promo_brand">
+								<div class="recommend-brand">
+									<div class="gw_con">
+										<div class="anli">
+											<div class="anli_con">
+												<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+													<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="w0 floor">
+				<div class="floor02 clearfix">
+					<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-three">
+						<div class="m-floor">
+							<div class="header left_floor">
+								<h2><span>3F</span><a href="#">个护化妆</a></h2>
+								<div class="recommend">
+									<div class="words">
+										<a href="#"><b>香水</b></a>
+										<a href="#"><b>底妆</b></a>
+										<a href="#"><b>腮红</b></a>
+										<a href="#"><b>眼部</b></a>
+										<a href="#"><b>唇部</b></a>
+										<a href="#"><b>沐浴</b></a>
+										<a href="#"><b>润肤</b></a>
+										<a href="#"><b>颈部</b></a>
+										<a href="#"><b>手足</b></a>
+									</div>
+									<a href="#" class="banner">
+										<img src="img/1453415171329689439.jpg" style="display:inline;" width="240" height="297"/>
+									</a>
+								</div>
+							</div>
+							<div class="content mid_floor">
+								<div class="goods">
+									<div class="middle-layout">
+										<ul class="tabs-nav">
+											<li class="tabs-selected"><h3>精挑细选</h3></li>
+											<li><h3>美容护肤</h3></li>
+											<li><h3>香水彩妆</h3></li>
+											<li><h3>面部护肤</h3></li>
+										</ul>
+										<div class="tabs-panel">
+											<div id="li_2687" class="j_ItemInfo">
+												<div class="wrap">
+													<a href="#">
+														<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+													</a>
+													<p class="title">
+														<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+													</p>
+													<p class="o-price">148.2</p>
+													<p class="price">
+														<span class="j_CurPrice">148.2</span>
+													</p>
+													<a class="j_AddCart"></a>
+													<i class="product-mask"></i>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="promo">
+								<a class="j_ItemInfo" href="#"><img src="img/1453500676055043445.jpg"/></a>
+								<a class="j_ItemInfo" href="#"><img src="img/1453500724641799627.jpg"/></a>
+							</div>
+							<div class="promo_brand">
+								<div class="recommend-brand">
+									<div class="gw_con">
+										<div class="anli">
+											<div class="anli_con">
+												<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+													<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+													<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+													<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+	
+			<div class="w0 floor">
+					<div class="floor02 clearfix">
+						<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-four">
+							<div class="m-floor">
+								<div class="header left_floor">
+									<h2><span>4F</span><a href="#">手机数码</a></h2>
+									<div class="recommend">
+										<div class="words">
+											<a href="#"><b>iPhone</b></a>
+											<a href="#"><b>联通4G</b></a>
+											<a href="#"><b>电信4G</b></a>
+											<a href="#"><b>电池</b></a>
+											<a href="#"><b>智能手环</b></a>
+											<a href="#"><b>智能手表</b></a>
+											<a href="#"><b>智能眼镜</b></a>
+											<a href="#"><b>智能家居</b></a>
+											<a href="#"><b>体感车</b></a>
+										</div>
+										<a href="#" class="banner">
+											<img src="img/1453415236832148867.jpg" style="display:inline;" width="240" height="297"/>
+										</a>
+									</div>
+								</div>
+								<div class="content mid_floor">
+									<div class="goods">
+										<div class="middle-layout">
+											<ul class="tabs-nav">
+												<li class="tabs-selected"><h3>精挑细选</h3></li>
+												<li><h3>网卡</h3></li>
+												<li><h3>热卖手机</h3></li>
+												<li><h3>手机配件</h3></li>
+											</ul>
+											<div class="tabs-panel">
+												<div id="li_2687" class="j_ItemInfo">
+													<div class="wrap">
+														<a href="#">
+															<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+														</a>
+														<p class="title">
+															<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+														</p>
+														<p class="o-price">148.2</p>
+														<p class="price">
+															<span class="j_CurPrice">148.2</span>
+														</p>
+														<a class="j_AddCart"></a>
+														<i class="product-mask"></i>
+													</div>
+												</div>
+	
+											</div>
+										</div>
+									</div>
+	
+								</div>
+								<div class="promo">
+									<a class="j_ItemInfo" href="#"><img src="img/1453500809001580759.jpg"/></a>
+									<a class="j_ItemInfo" href="#"><img src="img/1453500854929979664.jpg"/></a>
+								</div>
+								<div class="promo_brand">
+									<div class="recommend-brand">
+										<div class="gw_con">
+											<div class="anli">
+												<div class="anli_con">
+													<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+														<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+			<div class="w0 floor">
+					<div class="floor02 clearfix">
+						<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-five">
+							<div class="m-floor">
+								<div class="header left_floor">
+									<h2><span>5F</span><a href="#">家用电器</a></h2>
+									<div class="recommend">
+										<div class="words">
+											<a href="#"><b>电风扇</b></a>
+											<a href="#"><b>净化器</b></a>
+											<a href="#"><b>加湿器</b></a>
+											<a href="#"><b>吸尘器</b></a>
+											<a href="#"><b>取暖电器</b></a>
+											<a href="#"><b>饮水机</b></a>
+											<a href="#"><b>电饭煲</b></a>
+											<a href="#"><b>电磁炉</b></a>
+											<a href="#"><b>电炖锅</b></a>
+										</div>
+										<a href="#" class="banner">
+											<img src="img/1453415253644007085.jpg" style="display:inline;" width="240" height="297"/>
+										</a>
+									</div>
+								</div>
+								<div class="content mid_floor">
+									<div class="goods">
+										<div class="middle-layout">
+											<ul class="tabs-nav">
+												<li class="tabs-selected"><h3>精挑细选</h3></li>
+												<li><h3>大 家 电</h3></li>
+												<li><h3>大家电</h3></li>
+												<li><h3>生活电器</h3></li>
+											</ul>
+											<div class="tabs-panel">
+												<div id="li_2687" class="j_ItemInfo">
+													<div class="wrap">
+														<a href="#">
+															<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+														</a>
+														<p class="title">
+															<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+														</p>
+														<p class="o-price">148.2</p>
+														<p class="price">
+															<span class="j_CurPrice">148.2</span>
+														</p>
+														<a class="j_AddCart"></a>
+														<i class="product-mask"></i>
+													</div>
+												</div>
+	
+											</div>
+										</div>
+									</div>
+	
+								</div>
+								<div class="promo">
+									<a class="j_ItemInfo" href="#"><img src="img/1453501011364661973.jpg"/></a>
+									
+								</div>
+								<div class="promo_brand">
+									<div class="recommend-brand">
+										<div class="gw_con">
+											<div class="anli">
+												<div class="anli_con">
+													<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+														<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+			<div class="w0 floor">
+					<div class="floor02 clearfix">
+						<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-six">
+							<div class="m-floor">
+								<div class="header left_floor">
+									<h2><span>6F</span><a href="#">家居日用</a></h2>
+									<div class="recommend">
+										<div class="words">
+											<a href="#"><b>床品套件</b></a>
+											<a href="#"><b>被子</b></a>
+											<a href="#"><b>餐具</b></a>
+											<a href="#"><b>LED灯</b></a>
+											<a href="#"><b>装饰灯</b></a>
+											<a href="#"><b>收纳用品</b></a>
+											<a href="#"><b>雨伞雨具</b></a>
+											<a href="#"><b>浴室用品</b></a>
+											<a href="#"><b>净化除味</b></a>
+										</div>
+										<a href="#" class="banner">
+											<img src="img/1453415273635499801.jpg" style="display:inline;" width="240" height="297"/>
+										</a>
+									</div>
+								</div>
+								<div class="content mid_floor">
+									<div class="goods">
+										<div class="middle-layout">
+											<ul class="tabs-nav">
+												<li class="tabs-selected"><h3>精挑细选</h3></li>
+												<li><h3>家纺</h3></li>
+												<li><h3>家具</h3></li>
+												<li><h3>厨具</h3></li>
+											</ul>
+											<div class="tabs-panel">
+												<div id="li_2687" class="j_ItemInfo">
+													<div class="wrap">
+														<a href="#">
+															<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+														</a>
+														<p class="title">
+															<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+														</p>
+														<p class="o-price">148.2</p>
+														<p class="price">
+															<span class="j_CurPrice">148.2</span>
+														</p>
+														<a class="j_AddCart"></a>
+														<i class="product-mask"></i>
+													</div>
+												</div>
+	
+											</div>
+										</div>
+									</div>
+	
+								</div>
+								<div class="promo">
+									<a class="j_ItemInfo" href="#"><img src="img/1453501085602326560.jpg"/></a>
+									<a class="j_ItemInfo" href="#"><img src="img/1453501106066635601.jpg"/></a>
+								</div>
+								<div class="promo_brand">
+									<div class="recommend-brand">
+										<div class="gw_con">
+											<div class="anli">
+												<div class="anli_con">
+													<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+														<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+			<div class="w0 floor">
+					<div class="floor02 clearfix">
+						<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-seven">
+							<div class="m-floor">
+								<div class="header left_floor">
+									<h2><span>7F</span><a href="#">酒类饮料</a></h2>
+									<div class="recommend">
+										<div class="words">
+											<a href="#"><b>白酒</b></a>
+											<a href="#"><b>啤酒</b></a>
+											<a href="#"><b>养生酒</b></a>
+											<a href="#"><b>蜂蜜</b></a>
+											<a href="#"><b>茶叶</b></a>
+											<a href="#"><b>奶茶</b></a>
+											<a href="#"><b>麦片谷物</b></a>
+											<a href="#"><b>咖啡</b></a>
+											<a href="#"><b>果味冲调</b></a>
+										</div>
+										<a href="#" class="banner">
+											<img src="img/1453415344160139814.jpg" style="display:inline;" width="240" height="297"/>
+										</a>
+									</div>
+								</div>
+								<div class="content mid_floor">
+									<div class="goods">
+										<div class="middle-layout">
+											<ul class="tabs-nav">
+												<li class="tabs-selected"><h3>精挑细选</h3></li>
+												<li><h3>酒水</h3></li>
+												<li><h3>冲调饮品</h3></li>
+												<li><h3>饮料饮品</h3></li>
+											</ul>
+											<div class="tabs-panel">
+												<div id="li_2687" class="j_ItemInfo">
+													<div class="wrap">
+														<a href="#">
+															<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+														</a>
+														<p class="title">
+															<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+														</p>
+														<p class="o-price">148.2</p>
+														<p class="price">
+															<span class="j_CurPrice">148.2</span>
+														</p>
+														<a class="j_AddCart"></a>
+														<i class="product-mask"></i>
+													</div>
+												</div>
+	
+											</div>
+										</div>
+									</div>
+	
+								</div>
+								<div class="promo">
+									<a class="j_ItemInfo" href="#"><img src="img/1453501128787076742.jpg"/></a>
+									<a class="j_ItemInfo" href="#"><img src="img/1453501149539476820.jpg"/></a>
+								</div>
+								<div class="promo_brand">
+									<div class="recommend-brand">
+										<div class="gw_con">
+											<div class="anli">
+												<div class="anli_con">
+													<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+														<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+
+			<div class="w0 floor">
+					<div class="floor02 clearfix">
+						<div id="f0" class="home-standard-layout tm-chaoshi-floorlayout style-eight">
+							<div class="m-floor">
+								<div class="header left_floor">
+									<h2><span>8F</span><a href="#">母婴用品</a></h2>
+									<div class="recommend">
+										<div class="words">
+											<a href="#"><b>特配奶粉</b></a>
+											<a href="#"><b>宝宝沐浴</b></a>
+											<a href="#"><b>儿童防晒</b></a>
+											<a href="#"><b>爽身粉</b></a>
+											<a href="#"><b>奶瓶清洗</b></a>
+											<a href="#"><b>孕妇护肤</b></a>
+											<a href="#"><b>浴室用品</b></a>
+											<a href="#"><b>吸奶器</b></a>
+											<a href="#"><b>理发器</b></a>
+										</div>
+										<a href="#" class="banner">
+											<img src="img/1453415360590765714.jpg" style="display:inline;" width="240" height="297"/>
+										</a>
+									</div>
+								</div>
+								<div class="content mid_floor">
+									<div class="goods">
+										<div class="middle-layout">
+											<ul class="tabs-nav">
+												<li class="tabs-selected"><h3>精挑细选</h3></li>
+												<li><h3>尿裤湿巾</h3></li>
+												<li><h3>玩具</h3></li>
+												<li><h3>婴儿尿裤</h3></li>
+											</ul>
+											<div class="tabs-panel">
+												<div id="li_2687" class="j_ItemInfo">
+													<div class="wrap">
+														<a href="#">
+															<img src="img/f1_1.jpg" style="display:block;" width="160" height="160">
+														</a>
+														<p class="title">
+															<a href="#">邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</a>
+														</p>
+														<p class="o-price">148.2</p>
+														<p class="price">
+															<span class="j_CurPrice">148.2</span>
+														</p>
+														<a class="j_AddCart"></a>
+														<i class="product-mask"></i>
+													</div>
+												</div>
+	
+											</div>
+										</div>
+									</div>
+	
+								</div>
+								<div class="promo">
+									<a class="j_ItemInfo" href="#"><img src="img/1453501192017209838.jpg"/></a>
+									<a class="j_ItemInfo" href="#"><img src="img/1453501214203637079.jpg"/></a>
+								</div>
+								<div class="promo_brand">
+									<div class="recommend-brand">
+										<div class="gw_con">
+											<div class="anli">
+												<div class="anli_con">
+													<ul style="position: absolute; width: 1693px; height: 40px; top: 0px; left: 0px;" class="yyyy_1 anli_con_num">
+														<li class="fore1"><a href="#"><img src="img/anli01.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli01.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli02.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli03.jpg" width="100" height="40"/></a></li>
+														<li><a href="#"><img src="img/anli04.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli05.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli06.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli07.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli08.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli09.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli010.jpg"/></a></li>
+														<li><a href="#"><img src="img/anli012.jpg"/></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+
+		</div>
+		
+		<!--您身边的商超-->
+		<div class="wrapper">
+			<div class="shenbian_title_box">
+				<div class="shenbian_title">
+					<span class="title_img"></span>
+					<span class="title_txt">您身边的商超</span>
+				</div>
+				<div class="title_right"></div>
+			</div>
+			<div class="shenbian_ctn_box">
+				<div class="shenbian_ctn_list">
+					<ul>
+						<li class="one">
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_1.jpg"/></a>
+							<span class="shenbian_name">承德商厦</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_2.jpg"/></a>
+							<span class="shenbian_name">承德蓝鸟大厦</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_3.jpg"/></a>
+							<span class="shenbian_name">金龙购物广场</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_4.jpg"/></a>
+							<span class="shenbian_name">荣华家电商城</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_5.jpg"/></a>
+							<span class="shenbian_name">双百购物广场</span>
+						</li>
+						<li class="one">
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_6.jpg"/></a>
+							<span class="shenbian_name">天宝购物中心</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_7.jpg"/></a>
+							<span class="shenbian_name">掌上明珠家居生活馆</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_8.jpg"/></a>
+							<span class="shenbian_name">大润发超市</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_9.jpg"/></a>
+							<span class="shenbian_name">红星美凯龙</span>
+						</li>
+						<li>
+							<img src="img/z_ruzhuzhong.png"/>
+							<a href="#"><img src="img/end_10.jpg"/></a>
+							<span class="shenbian_name">宽广超市</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!--左边楼梯导航-->
+		<div class="fsFixedTopContent">
+			<div class="fsFixedTop">
+				<a class="smooth">
+					<b style="border-top:none">1F</b>
+					<em class="fs-name">食物</em>
+				</a>
+				<a class="smooth">
+					<b>2F</b>
+					<em class="fs-name">服饰</em>
+				</a>
+				<a class="smooth">
+					<b>3F</b>
+					<em class="fs-name">化妆</em>
+				</a>
+				<a class="smooth">
+					<b>4F</b>
+					<em class="fs-name">手机</em>
+				</a>
+				<a class="smooth">
+					<b>5F</b>
+					<em class="fs-name">家电</em>
+				</a>
+				<a class="smooth">
+					<b>6F</b>
+					<em class="fs-name">家纺</em>
+				</a>
+				<a class="smooth">
+					<b>7F</b>
+					<em class="fs-name">酒水</em>
+				</a>
+				<a class="smooth">
+					<b>8F</b>
+					<em class="fs-name">母婴</em>
+				</a>
+			</div>
+		</div> 
+	
+		<div id="dibu"></div>
+		<!--右侧栏-->
+		<div class="car_nav"></div>
+	</body>
+
+</html>

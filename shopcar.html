@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/com.css" type="text/css" rel="stylesheet"/>
+		<link href="css/ht_com.css" type="text/css" rel="stylesheet"/>
+		<link href="css/index.css" type="text/css" rel="stylesheet"/>
+		<link href="css/shopcar.css" type="text/css" rel="stylesheet"/>
+		<script src="libs/jquery-1.11.3.js"></script>
+		<script src="libs/jquery.cookie.js"></script>
+		<script src="js/r_text.js"></script>
+		<script type="text/javascript" src="js/shopping_car.js" ></script>
+		
+		<script>
+		$(function(){
+
+			//顶部导入
+			$(".top_box").load("text.html #site-nav", function() {
+		
+				//顶部导航菜单设置
+				$(".sn-menu li").mouseover(function() {
+					//alert(1)   cs ww
+					//console.log($(this).find("b"))
+					$(this).find("b").stop().animate({
+						"background-position-y": "-10px", //改变b标签的背景
+					})
+		
+					$(this).find(".menu-bd").css("display", "block");
+				})
+				
+				$(".sn-menu li").mouseout(function() {
+		
+					$(this).find("b").stop().animate({
+						"background-position-y": "0px",
+					})
+					$(this).find(".menu-bd").css("display", "none");
+				})   
+					
+					
+				var em0 = $.cookie("UserName");
+				
+				$(".em0").html(em0);
+					//alert($(".em0").html())
+					
+			//右侧栏导入
+				$(".car_nav").load("text.html .sidebar-nav", function() {
+					r_nav();
+					sc_car();
+					//					spxq(j);
+					show();
+					shmag();
+					
+				});
+
+				});//导入底部
+	         $(".login_footer").load("text.html #site-footer");
+	         
+	       //购物车商品的加载
+	        $("#HotBoxTit li").mouseover(function(){
+	        	$("#HotBoxTit li").attr("class","");
+	        	$(this).addClass("curr");
+	        })
+	        
+	         
+				
+		})
+		</script>
+	</head>
+	<body>
+		<div class="top_box"></div>
+		<div class="car_nav"></div>
+		
+		
+		<div class="headerLayout" style="padding-top:15px; padding-bottom:5px;">
+			<div class="headerCon">
+				<h1 id="mallLogo" style="padding-top:10px;">
+					<a class="header-logo"><img src="img/logo2.jpg"/></a>
+				</h1>
+				<div class="header-extra"> </div>
+			</div>
+		</div>
+		<div class="blank"></div>
+		<div class="block_jm">
+			<div id="A_Stepbar" class="flowstep">
+				<ol class="flowstep-5">
+					<li class="step-first">
+						<div class="step-done">
+							<div class="step-name">查看购物车</div>
+							<div class="step-no"></div>
+						</div>
+					</li>
+					<li>
+						<div class="step-done">
+							<div class="step-name">拍下商品</div>
+							<div class="step-no">2</div>
+						</div>
+					</li>
+					<li>
+						<div class="step-done">
+							<div class="step-name">付款</div>
+							<div class="step-no">3</div>
+						</div>
+					</li>
+					<li>
+						<div class="step-done">
+							<div class="step-name">确认收货</div>
+							<div class="step-no">4</div>
+						</div>
+					</li>
+					<li class="step-last">
+						<div class="step-done">
+							<div class="step-name">评价</div>
+							<div class="step-no">5</div>
+						</div>
+					</li>
+				</ol>
+			</div>
+			<div class="blank5"></div>
+			<div class="flowBox_jm" style="margin-top:10px;">
+				<div class="title_jm">
+					<table width="100%" cellspacing="0" cellpadding="0" border="0">
+						<tbody>
+							<tr>
+								<td width="8%" align="center">
+									<input autocomplete="off" id="chkAll" name="chkAll" checked="true" style="height:28px;vertical-align:middle;" type="checkbox">全选
+								</td>
+								<td width="37%" align="center">产品</td>
+								<td width="15%" align="center">数量</td>
+								<td width="15%" align="center">本店价</td>
+								<td width="15%" align="center">小计</td>
+								<td width="10%" align="center">操作</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<form id="formCart1" name="formCart">
+					
+				</form>
+				
+				<table style="border-top:1px solid #ddd;" width="100%" cellspacing="6" cellpadding="5" border="0" align="center">
+					<tbody>
+						<tr>
+							<td width="150">
+								<a class="continue_buy" href="index.html">继续购物</a>
+							</td>
+							<td width="80" align="right">
+								<a class="jmclear">
+									<font color="#aaaaaa">清空购物车 </font>
+								</a>
+							</td>
+							<td id="cart_money_info" align="right"> 应付总额： 
+								<span>0.00</span>，比市场价 0.00 节省了 0.00 (0)
+							</td>
+							<td width="150" align="right">
+								<a href="login.html" class="jmcheckout" style="color:#ffffff">去结算
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="blank"></div>
+			<div class="flowBox_jm">
+				<div class="title_jm">
+					<ul id="HotBoxTit">
+						<li class="curr">购买的还买了</li>
+						<li>今日最受欢迎</li>
+					</ul>
+				</div>
+				<div id="HotBox" class="flowHot">
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2806_thumb_G_1460757672449.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">海俪恩太阳镜女款唐嫣同款 时尚镀膜偏光太...</a>
+							</p>
+							<p class="o-price">148.2</p>
+							<p class="price">
+								<span class="j_CurPrice">148.2</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2805_thumb_G_1460757602080.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">海俪恩太阳镜女 唐嫣同款 2016新款 ...</a>
+							</p>
+							<p class="o-price">393.2</p>
+							<p class="price">
+								<span class="j_CurPrice">328.2</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2804_thumb_G_1460757487454.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">海俪恩2016新款太阳镜 男士墨镜 男款...</a>
+							</p>
+							<p class="o-price">429.2</p>
+							<p class="price">
+								<span class="j_CurPrice">358.2</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2803_thumb_G_1460757401573.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">普莱斯近视眼镜男 纯钛眼镜架男 商务半框...</a>
+							</p>
+							<p class="o-price">201.2</p>
+							<p class="price">
+								<span class="j_CurPrice">168.2</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2802_thumb_G_1460757291861.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">普莱斯太阳镜男墨镜偏光镜蛤蟆镜开车驾驶司...</a>
+							</p>
+							<p class="o-price">213.6</p>
+							<p class="price">
+								<span class="j_CurPrice">178.0</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2801_thumb_G_1460757188503.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">普莱斯2016新款太阳镜女 墨镜大框圆脸...</a>
+							</p>
+							<p class="o-price">189.6</p>
+							<p class="price">
+								<span class="j_CurPrice">158.0</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2800_thumb_G_1460757096153.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">普莱斯2016新太阳镜女四叶草墨镜女潮流...</a>
+							</p>
+							<p class="o-price">222.0</p>
+							<p class="price">
+								<span class="j_CurPrice">185.0</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2799_thumb_G_1460756995192.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">普莱斯2016太阳镜女潮圆脸太阳镜女开车...</a>
+							</p>
+							<p class="o-price">153.6</p>
+							<p class="price">
+								<span class="j_CurPrice">128.0</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2798_thumb_G_1460756907511.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">新款电脑防辐射眼镜护目镜抗疲劳复古眼镜框...</a>
+							</p>
+							<p class="o-price">103.2</p>
+							<p class="price">
+								<span class="j_CurPrice">86.0</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>
+					<div id="li_2687" class="j_ItemInfo">
+						<div class="wrap" id="1">
+							<a style="padding-bottom: 15px;display: block;">
+								<img src="img/2797_thumb_G_1460756733251.jpg" style="display:block;">
+							</a>
+							<p class="title">
+								<a href="#">新款潮韩版墨镜太阳镜明星款半框炫彩女圆形...</a>
+							</p>
+							<p class="o-price">115.1</p>
+							<p class="price">
+								<span class="j_CurPrice">96.0</span></p>
+							<a class="j_AddCart"></a>
+							<i class="product-mask"></i>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="login_footer"></div>
+	</body>
+</html>

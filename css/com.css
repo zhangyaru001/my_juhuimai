@@ -1,0 +1,29 @@
+body{
+	font: 12px/150% microsoft yahei;
+	color: #666666;
+	/*background: #fff none repeat scroll 0 0;*/
+}
+
+div,h1,h2,h4,h3,ul,li,dl,img,a,body,span,b,dd,p,html,ol{
+	margin:0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+	color: #666666;
+	 cursor: pointer;
+    outline: medium none;
+}
+em,h1,h2,h3,h4,strong,b,i{
+	font-style: normal;
+}	
+ul li{
+	list-style: none;
+}
+a:hover {
+    color: #e4393C;
+    text-decoration: underline;
+}	
+ul, ol {
+    list-style: none outside none;
+}

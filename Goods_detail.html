@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品详情页</title>
+		<link href="css/com.css" type="text/css" rel="stylesheet" />
+		<link href="css/ht_com.css" type="text/css" rel="stylesheet" />
+		<link href="css/index.css" type="text/css" rel="stylesheet" />
+		<link href="css/goods_detail.css" type="text/css" rel="stylesheet" />
+		<link href="css/good_list.css" type="text/css" rel="stylesheet" />
+		
+		<style>
+			.all_cat{
+				margin-top:35px;
+			}
+			.all_w0{
+				display:none;
+			}
+			.MagicZoomBigImageCont {
+   				border: 1px solid #999;
+			}
+			.ce_right ul li {
+			    height: 40px;
+			    line-height: 40px;
+			    position: relative;
+			    width: 78px;
+			    background-position: -108px -85px;
+			    cursor: pointer;
+			}
+		</style>
+		
+		<script src="libs/jquery-1.11.3.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/all_list.js"></script>
+		<script src="libs/jquery.cookie.js"></script>
+		<script src="js/r_text.js"></script>
+		<script type="text/javascript" src="js/shopping_car.js" ></script>
+		<script>
+		
+		$(function() {
+
+			$oPosition_box = $(".MagicZoomPup");
+            $oS_box = $(".mark_box");
+            $oB_box_all = $(".MagicZoomBigImageCont");
+            $oB_box = $(".MagicZoomBigImageCont img");
+
+            $oS_box.mousemove (function(event){
+                var ev = event || window.event;
+  
+               var left,top;
+                left = ev.offsetX - $oPosition_box[0].offsetWidth/2;
+                top = ev.offsetY - $oPosition_box[0].offsetHeight/2;
+                
+                //边界检测
+                left = left < 0 ? 0 :　left;
+                top = top < 0 ? 0 : top;
+                left = left > $oS_box[0].offsetWidth - $oPosition_box[0].offsetWidth ?
+                         $oS_box[0].offsetWidth - $oPosition_box[0].offsetWidth : left;
+                top = top > $oS_box[0].offsetHeight - $oPosition_box[0].offsetHeight ?
+                $oS_box[0].offsetHeight - $oPosition_box[0].offsetHeight : top;
+                
+//              console.log(left);
+                //小灰框动起来
+                $oPosition_box.css("left",left);
+               $oPosition_box.css("top",top);
+
+                //比例计算
+                var propleft = left/($oS_box[0].offsetWidth - $oPosition_box[0].offsetWidth);
+                var proptop = top/($oS_box[0].offsetHeight - $oPosition_box[0].offsetHeight);
+                $oB_box[0].style.left = -(-$oB_box_all[0].offsetWidth +$oB_box[0].offsetWidth )*propleft+"px";
+                $oB_box[0].style.top = -(-$oB_box_all[0].offsetHeight +$oB_box[0].offsetHeight )*proptop+"px";
+          })
+
+            //小灰框的显示和隐藏
+            $oS_box.mouseover(function(){
+                //alert(1);  sj ww
+
+                $oPosition_box.css({"display":"block"},{"visibility":"visible"});
+                $oB_box_all.css("top","0");
+               
+            })
+            $oS_box.mouseout(function(){
+                //alert(1);  sj ww
+	            $oPosition_box.css({"display":"none"},{"visibility":"hidden"});
+                $oB_box_all.css("top","-100000px");
+            })
+
+			
+			//顶部导入
+			$(".top_box").load("text.html #site-nav", function() {
+		
+				//顶部导航菜单设置
+				$(".sn-menu li").mouseover(function() {
+					//alert(1)   cs ww
+					//console.log($(this).find("b"))
+					$(this).find("b").stop().animate({
+						"background-position-y": "-10px", //改变b标签的背景
+					})
+		
+					$(this).find(".menu-bd").css("display", "block");
+				})
+				
+				$(".sn-menu li").mouseout(function() {
+		
+					$(this).find("b").stop().animate({
+						"background-position-y": "0px",
+					})
+					$(this).find(".menu-bd").css("display", "none");
+				})   
+					
+					
+				var em0 = $.cookie("UserName");
+				
+				$(".em0").html(em0);
+					//alert($(".em0").html())
+					
+			//右侧栏导入
+				$(".car_nav").load("text.html .sidebar-nav",function(){
+					r_nav();
+					sc_car();
+//					spxq(j);
+					shmag();
+				});
+					
+			});
+	
+
+			
+			//吸顶菜单
+				
+				//alert($('#main-nav-holder').eq(0).offset().top) //cs ww
+				var mnavTop = $('#main-nav-holder').eq(0).offset().top;
+				var mfTop = $('.foot_box').eq(0).offset().top;
+				$(window).scroll(function () {
+
+					if ($(window).scrollTop() > mnavTop+50 ) {
+						
+						 $('#main-nav-holder').css({"position":"fixed"},{"top":"0"});  //吸顶
+					}
+					else{
+						
+						$('#main-nav-holder').css({"position":"relative"},{"top":mnavTop});  //恢复原位
+					}
+				});
+			
+			//商品详情菜单点击跳转
+			
+				$("#nav li").click(function(){
+					
+					$("#nav li").attr("class","boldtit_list");
+					$(this).addClass("h_list");
+			        //alert($(this).index())  cs  ww
+					
+			        var offsetTop = $('#main_widget_1 .nx').eq($(this).index()).offset().top;
+					//alert(offsetTop)
+			        $(document).scrollTop(offsetTop);
+			    })
+					
+			
+			
+			
+			
+			//头部导入
+			 	$(".head_box").load("text.html #header");
+ 			 	$(".headnav_box").load("text.html .globa-nav",function(){
+ 			 		
+ 			 		$(".fenlei").load("text.html .all_w0",function(){
+ 			 			$(".all_cat a").attr("href","goods_list.html");
+ 			 		});
+
+					$(".allGoodsCat").mouseover(function(){
+						$(".all_w0").css("display","block");
+						all_cat();
+					})
+					$(".allGoodsCat").mouseout(function(){
+						$(".all_w0").css("display","none");
+						
+					})	
+ 			 	});
+	
+			//底部导入
+				$(".foot_box").load("text.html .site-footer");
+				
+				
+				//会员价
+				$(".rank_prices").mouseover(function(){
+					
+					$(".rank_prices #vip1").css("display","none");
+					$(".rank_prices #vip2").css("display","block");
+				})
+				$(".rank_prices").mouseout(function(){
+					
+					$(".rank_prices #vip1").css("display","block");
+					$(".rank_prices #vip2").css("display","none");
+				})
+				
+			
+				
+			//推荐精品
+			var i = 0;
+			
+				$("#btn-right1").click(function(){
+					
+					if(i>=0 && i<4){
+						
+						var r = parseInt($(".colFrame ul").css("left"))-186;
+						//alert(l)
+						$(".colFrame ul").css("left",r);
+						i++;
+//						alert($(".colFrame ul").css("left"))
+					}
+				})
+			
+				$("#btn-left1").click(function(){
+					if(i>0){
+						var l = parseInt($(".colFrame ul").css("left")) + 186;
+						//alert(l)
+						$(".colFrame ul").css("left",l);
+						i--;
+					}
+				})
+		})
+		</script>
+	</head>
+	<body>
+
+		
+		<!--头部引入-->
+		<div class="top_box"></div><div class="head_box"></div><div class="headnav_box"></div>
+					
+		<!--页面位置导航-->
+		<div class="w0" style="margin-top:10px;margin-bottom: 10px;">
+			<div class="breadcrumb">
+				<i style=" background:url(img/user_header.png) no-repeat;
+					background-position: -427px -208px;"></i>
+				<a href="index.html">首页</a><code>></code>
+				<a href="index.html">食品生鲜</a><code>></code>
+				<a href="index.html">保健食品</a><code>></code>
+				 邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头
+			</div>
+		</div>
+		
+		
+		<div class="w0">
+			<div id="product-intro" class="goods_photo">
+				<div id="preview">
+					<div id="li_2687" class="goods_img">
+						<a id="zoom" class="MagicZoom">	
+							<div class="mark_img" style="width: 378px;height: 378px;position: relative;">
+								<div class="mark_box" style="width:378px;height:378px;position: absolute;left:0;top:0;z-index: 10;"></div>
+								<img src="img/f1_1.jpg" id="goods_bimg" class="goodsimg pic_img_2687" 
+									style="width: 378px;height: 378px;border: 1px solid rgb(221, 221, 221);opacity: 1;"/>
+								
+								<div class="MagicZoomPup" style="z-index: 1;position: absolute; overflow: hidden; 
+									display: none; visibility: visible; width: 272px; height: 175px; opacity: 0.5; 
+									left: 0px; top: 136.5px;">
+								</div>	
+							</div>
+							<div class="MagicZoomBigImageCont" style="overflow: hidden; z-index: 100; 
+								top: -100000px; position: absolute;width: 580px; height: 376px; opacity: 1;
+								 left: 393px;">
+
+								<div style="overflow: hidden;">
+									<img src="img/f1_1.jpg" style="padding: 0px; margin: 0px; border: 0px none; 
+										position: relative; left: -3px; top: -283px;width:801px;height:801px;"/>
+								</div>
+								
+							</div>
+
+						</a>
+						
+					</div> 
+					<div style="height:10px; line-height:10px; clear:both;"></div>
+					<div class="clearfix">
+						<span class="scrleft"></span>
+						<div class="gallery">
+							<div id="demo" style="width:360px">
+								<div id="demo1" style="float: left; width: 60px;">
+									<ul id="goods_gallery">
+										<li><a><img class="B_blue" src="img/100_thumb_G_1437523484060.jpg"/></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<span class="scrright"></span>
+					</div>
+					<div id="short-share">
+						<div id="view-bigimg" class="fl" style="margin-right:20px;">
+							<b></b>
+							<a href="javascript:;">查看大图</a>
+						</div>
+						<div id="share-list fl" style="margin-right:20px;">
+							<div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+								<img src="img/type-button-1.jpg"/>
+							</div>
+						</div>
+						<div class="fl com-pare">
+							<a class="compare-btn" style="background-position: 0px -75px;"></a>
+						</div>
+					</div>
+				</div>
+				
+				<form id="ECS_FORMBUY">
+					<div class="clearfix" style="width:591px; min-height:510px;"> 
+						<div class="goods_info">
+							<div id="name"><h1>邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</h1></div>
+							<div id="summary-price">
+								<div class="mar_l">
+									<p>
+										<span class="price">售价</span>
+										<strong id="ECS_GOODS_AMOUNT" class="p-price">148.2</strong>
+										<span class="depreciate">
+											<a href="#" style="color:#ffffff;text-decoration:none;">降价通知</a>
+										</span>
+									</p>
+								</div>
+								<div class="show_price" style="z-index:101">
+									<div class="market_prices_t">
+										<span class="price">市场价</span>
+										<font class="market_price">148.2</font>
+									</div>
+									<div class="rank_prices">
+										<div id="vip1">
+											<span class="rmbPrice">会员等级价格<i style="background: url(img/goods_act.png) no-repeat;background-position: 0px -111px;"></i></span>
+										</div>
+										<div id="vip2">
+											<span class="rmbPrice">会员等级价格
+												<i style="background: url(img/goods_act.png) no-repeat;background-position: 0px -111px;"></i>
+											</span>
+											<br/>
+											<span class="rmbPrice">铜牌会员：140.7</span>
+											<br/>
+											<span class="rmbPrice">金牌会员：133.3</span>
+											<br/>
+											<span class="rmbPrice">钻石会员：125.9</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+								<ul id="summary1">
+									<li class="padd1">
+										<div class="dt">商品货号</div>
+										<div class="dd"> JHM0026870 </div>
+									</li>
+									<li class="padd1">
+										<div class="dt">上架时间</div>
+										<div class="dd">  2016-03-02  </div>
+									</li>
+								</ul>
+								<div id="summary-qita" class="clearfix" style="width:560px;height:57px">
+									<ul class="qita">
+										<li><p>累计评价<span><a href="#">0人评价</a></span></p></li>
+										<li><p>累计销量<span>0</span></p></li>
+										<li><p>赠送积分<span><font id="ECS_GOODS_AMOUNT_jf">148</font></span></p></li>
+									</ul>
+								</div>
+								<ul id="choose" class="choose_bor">
+									<li id="choose-amount" style="padding:0 0 7px 0px; overflow:visible;z-index:2; position:relative">
+										<div class="dt">数量：</div>
+										<div class="dd">
+											<div class="wrap-input">
+												<a class="btn-reduce"></a>
+												<input id="number" class="text" name="number" value="1"/>
+												<a class="btn-add" style="margin-right:5px"></a> (库存<font id="shows_number">100</font>)
+											</div>
+										</div>
+									</li>
+								</ul>
+								<div class="buyNub-buy-wrap">
+									<div id="choose-btns" class="buyNub-buy">
+										<a class="u-buy1" name="bi_addToCart">立即购买</a>
+										<a class="u-buy2" name="bi_addToCart">加入购物车</a>
+										<a class="btn-coll" style="background-position: -75px 4px;">收藏</a>
+										<a id="phone" class="btn-phone" style="position:relative;cursor:pointer;background-position: -75px -56px;">去手机购买</a>
+									</div>
+								</div>
+						</div>
+					</div>
+				</form>
+				<div id="supp_info">
+					<div id="brand-bar-pop">
+						<dl id="ghs_shop" style="border-bottom:1px solid #ddd; padding-bottom:5px;
+							 text-align:center;padding-top:13px;">
+							<dt class="shop_title">卖家：
+								<a style="color:#333333" href="#">聚惠买商贸公司</a>
+							</dt>
+							<dd></dd>
+							<div class="ghs_clear"></div>
+						</dl>
+						<dl id="hotline">
+							<dt style="margin-right: 10px;">好评率 </dt>
+							<dd>
+								<span class="hot_grey">
+									<span class="hot_red" style="width:100%;"></span>
+								</span>
+							</dd><div class="ghs_clear"></div>
+						</dl>
+						<ul class="score_detail">
+							<li style="border-left:0;">
+								<span>描述</span><span class="scores">5.0</span>
+							</li>
+							<li>
+								<span>服务</span><span class="scores">5.0</span>
+							</li>
+							<li>
+								<span>物流</span><span class="scores">5.0</span>
+							</li>
+						</ul>
+						<dl di="hotline" style="padding-top:10px;">
+							<dt>商家名称  &nbsp; &nbsp; 聚惠买商贸公司</dt>
+							<dd></dd><div class="ghs_clear"></div>
+						</dl>
+						<dl di="hotline">
+							<dt>客   服 QQ
+								<em><a>  <img src="img/pa.gif"/></a></em>
+							</dt>
+							<dd></dd><div class="ghs_clear"></div>
+						</dl>
+						<dl di="hotline">
+							<dt>所在地区  &nbsp; &nbsp;</dt>
+							<dd> &nbsp;河北邯郸</dd><dd class="ghs_clear"></dd>
+						</dl>
+						<div id="enter-shop">
+							<div class="shop_follow_item clearfix">
+								<a href="#" class="btn_flat1 btn_goto_shop" style="background-position: -146px 7px;">进入商店</a>
+								<a href="#" class="btn_flat1 btn_shop_add">关注本店</a>
+							</div>
+							<div id="attention-shop">
+								<p>扫一扫，手机访问店铺</p>
+								<img src="" width="120" height="120">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="blank"></div>
+			<div class="blank"></div>
+			<div class="w0">
+				<div class="clearfix"></div>
+				<div class="goods_best">
+					<div class="mt">
+						<h2>推荐精品</h2>
+					</div>
+					<div class="colList">
+						<a id="btn-left1" class="prev">
+							<img src="img/goods_best_l.png">
+						</a>
+						<div class="slider1 colFrame">
+							<ul style="width: 1860px;">
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/139_thumb_G_1452881454307.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">189.0</strong>
+										</div>
+										<div class="rate"><a href="#">优雅100 经典设计款全...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/137_thumb_G_1452880999258.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">399.0</strong>
+										</div>
+										<div class="rate"><a href="#">LOVO 罗莱家纺出品全...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/140_thumb_G_1437528915082.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">333.0</strong>
+										</div>
+										<div class="rate"><a href="#">雅鹿全棉四件套纯棉套件床...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/175_thumb_G_1452904659940.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">750.0</strong>
+										</div>
+										<div class="rate"><a href="#">Xiaomi/小米 红米...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/143_thumb_G_1452901097844.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">2699.0</strong>
+										</div>
+										<div class="rate"><a href="#">小米Xiaomi/小米 ...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/147_thumb_G_1452897883992.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">1899.0</strong>
+										</div>
+										<div class="rate"><a href="#">Huawei/华为 荣耀...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/100_thumb_G_1437523484060.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">4888.0</strong>
+										</div>
+										<div class="rate"><a href="#">苹果（Apple）iPh...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/253_thumb_G_1450043521909.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">78.0</strong>
+										</div>
+										<div class="rate"><a href="#">丛台白酒浓香型 贞元增 ...</a></div>
+									</div>
+								</li>
+								<li>
+									<div class="p-img">
+										<a href="#">
+											<img width="160" height="160" src="img/224_thumb_G_1437586899394.jpg"/>	
+										</a>
+									</div>
+									<div class="rain-product-info">
+										<div class="p-price">
+											<strong class="best_goods_price">4600.0</strong>
+										</div>
+										<div class="rate"><a href="#">中派 进口芬兰松木家具实...</a></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<a id="btn-right1" class="next dasabled"><img src="img/goods_best_r.png"/></a>
+					</div>
+				</div>
+				<div style="overflow: hidden;">
+				<div class="left">
+					<div id="related-sorts" class="m m2">
+						<div class="mt"><h2>相关分类</h2></div>
+						<div class="mc">
+							<ul class="1h">
+								<li><a href="#">食品生鲜</a></li>
+								<li><a href="#">服装服饰</a></li>
+								<li><a href="#">个护化妆</a></li>
+								<li><a href="#">手机数码</a></li>
+								<li><a href="#">家用电器</a></li>
+								<li><a href="#">家居日用</a></li>
+								<li><a href="#">酒类饮料</a></li>
+								<li><a href="#">母婴用品</a></li>
+							</ul>
+						</div>
+					</div>
+					<div id="related-brands" class="m m2">
+						<div class="mt"><h2>同类品牌</h2></div>
+						<div class="mc">
+							<ul class="lh">
+								<li><a href="#">溢彩年华</a></li>
+								<li><a href="#">佐丹奴</a></li>
+								<li><a href="#">达芙妮</a></li>
+								<li><a href="#">雪花</a></li>
+								<li><a href="#">茵曼（INMAN）</a></li>
+								<li><a href="#">狮王</a></li>
+								<li><a href="#">姬芮</a></li>
+								<li><a href="#">伊芙丽</a></li>
+								<li><a href="#">伊莱克斯</a></li>
+								<li><a href="#">泸州老窖</a></li>
+								<li><a href="#">曼妮芬（ManniForm）</a></li>
+								<li><a href="#">缪诗</a></li>
+								<li><a href="#">七匹狼</a></li>
+								<li><a href="#">卓诗尼</a></li>
+								<li><a href="#">其他</a></li>
+								<li><a href="#">Grlbobra</a></li>
+								<li><a href="#">珂尔妮</a></li>
+								<li><a href="#">艺尔</a></li>
+								<li><a href="#">卡欧澜</a></li>
+								<li><a href="#">贵绣</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="right goods_right">
+					<div id="wrapper" class="m m1">
+						<div id="main-nav-holder" class="mt" style="position: static; top: 0px;">
+							<ul id="nav" class="tab">
+								<li class="boldtit_list h_list"><a>规格参数</a></li>
+								<li class="boldtit_list"><a>商品介绍</a></li>
+								<li class="boldtit_list "><a>商品评价(0)</a></li>
+								<li class="boldtit_list"><a>售后保障</a></li>
+							</ul>
+							<div style="width:170px;float:right; position:relative;left:0;top:0">
+								<a name="bi_addToCart" class="right_add">加入购物车</a>
+								<div class="ce_right">
+									<ul class="abs_ul" id="rul">
+										<li class="abs_active">
+											<i style=" background-position: -84px -83px;"></i><span>规格参数</span>
+										</li>
+										<li>
+											<i></i><span>产品介绍</span>
+										</li>
+										<li>
+											<i></i><span>商品评价</span>
+										</li>
+										<li>
+											<i></i><span>包装清单</span>
+										</li>
+										<li>
+											<i></i><span>售后服务</span>
+										</li>
+										<li>
+											<i></i><span>常见问题</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div id="main_widget_1">
+							<div id="os_canshu" class="mc nx">
+								<ul class="detail-list">
+									<li>商品名称：邯郸磁州窑·黑釉刻划剔刻·牡丹纹茶具·5头</li>
+									<li>商品编号：JHM0026870</li>
+									<li>品牌：</li>
+									<li>上架时间：2016-03-02</li>
+									<li>商品毛重：0克</li>
+									<li>库存：100</li>
+								</ul>
+							</div>
+							<div id="os_jieshao" class="mc nx">
+								<div class="detail-content">
+									<p><img src="img/17731456908410.jpg"/></p>
+									<p><img src="img/63381456908410.jpg"/></p>
+									<p><img src="img/73781456908410.jpg"/></p>
+									<p><img src="img/31191456908410.jpg"/></p>
+								</div>
+							</div>
+							<div id="os_pinglun" class="mc nx">
+								<div class="blank20"></div>
+								<div class="my_comment_pre">
+									<div class="tab_title">
+										<span>商品评价</span>
+									</div>
+									<div class="goods_info_con">
+										<ul class="clearfix">
+											<li class="hpd">
+												<div>0%</div><p>好评度</p>	
+											</li>
+											<li class="pre">
+												<dl class="clearfix">
+													<dt>好评<span>(0%)</span></dt>
+													<dd><div style="width:0%"></div></dd>
+												</dl>	
+												<dl class="clearfix">
+													<dt>中评<span>(0%)</span></dt>
+													<dd><div style="width:0%"></div></dd>
+												</dl>	
+												<dl class="clearfix">
+													<dt>差评<span>(0%)</span></dt>
+													<dd><div style="width:0%"></div></dd>
+												</dl>	
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="blank"></div>
+								<div class="my_comment_tab">
+									<ul class="clearfix">
+										<li id="mct_0" class="cur">全部评价<span>(0)</span></li>
+										<li id="mct_1" >好评<span>(0)</span></li>
+										<li id="mct_2">中评<span>(0)</span></li>
+										<li id="mct_3">差评<span>(0)</span></li>
+										<li id="mct_4">用户晒单<span>(0)</span></li>
+									</ul>
+								</div>
+								<div class="blank"></div>
+								<div id="ECS_MYCOMMENTS" class="my_comment_list">
+									<div class="no_comment">暂时还没有任何评论！</div>
+								</div>
+							</div>
+							<div id="os_advantage" class="mc">
+								<div class="blank20"></div>
+								<div class="my_goods_info">
+									<div class="tab_title">
+										<span>包装清单</span>
+									</div>
+									<div class="goods_info_con">
+										<img src="img/s-package.jpg"/>
+									</div>
+								</div>
+							</div>
+							<div id="os_shouhou" class="mc nx">
+								<div class="blank20"></div>
+								<div class="my_goods_info">
+									<div class="tab_title">
+										<span>售后保障</span>
+									</div>
+									<div class="goods_info_con">
+    									售后服务电话：400-0310-707 <br/>商城官方网站：http://www.juhuimai.cn<br/>
+										<div class="baozhang_info">
+											本商城向您保证所售商品均为正品行货，本商城自营商品自带机打发票，与商品一起寄送。凭质保证书及本商城发票，
+											可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由本商城联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受
+											相同的质量保证。本商城还为您提供具有竞争力的商品价格和<a href="#" target="_blank">运费政策</a>，请您放心购买！ 
+											<br/><br/>注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、
+											产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
+											<div id="state">
+												<strong>权利声明：</strong><br/>本商城上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是京东商城重要的
+												经营资源，未经许可，禁止非法转载使用。
+												<p><b>注：</b>
+													本站商品信息均来自于厂商，其真实性、准确性和合法性由信息拥有者（厂商）负责。本站不提供任何保证，并不承担任何法律责任。
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="os_changjian" class="mc">
+								<div class="blank20"></div>
+								<div class="wenti">
+									<div class="tab_title">
+										<span>常见问题</span>
+									</div>
+									<div class="tab_body">
+										<div class="list">
+											<div class="question clearfix">
+												<span class="icon Left" style="background-position: -50px -60px;"></span>
+												<strong class="common_right">下单后可以修改订单吗？</strong>
+											</div>
+											<div class="answer clearfix">
+												<span class="icon Left"></span>
+												<p class="common_right">由本网站发货的订单，在订单打印之前可以修改，
+													打开“订单详情”页面，点击右上角的“修改订单”即可，若没有修改订单按钮，则表示订单无法修改。</p>
+											</div>
+										</div>
+										<div class="list">
+											<div class="question clearfix">
+												<span class="icon Left" style="background-position: -50px -60px;"></span>
+												<strong class="common_right">无货商品几天可以到货？</strong>
+											</div>
+											<div class="answer clearfix">
+												<span class="icon Left"></span>
+												<p class="common_right">您可以通过以下方法获取商品的到货时间：若商品页面中，显示“无货”时：
+													商品具体的到货时间是无法确定的，您可以通过商品页面的“到货通知”功能获得商品到货提醒。</p>
+											</div>
+										</div>
+										<div class="list">
+											<div class="question clearfix">
+												<span class="icon Left" style="background-position: -50px -60px;"></span>
+												<strong class="common_right">订单如何取消？</strong>
+											</div>
+											<div class="answer clearfix">
+												<span class="icon Left"></span>
+												<p class="common_right">如订单处于暂停状态，进入“我的订单"页面，找到要取消的订单，点击“取消订单”按钮。</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		<div style="height:20px; line-height:20px; clear:both"></div>
+		<!--底部引入-->
+		<div class="foot_box"></div>
+		
+		<!--右侧栏-->
+		<div class="car_nav"></div>
+	</body>
+</html>

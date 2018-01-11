@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>头部和尾部</title>
+		<link href="css/com.css" type="text/css" rel="stylesheet" />
+		<link href="css/ht_com.css" type="text/css" rel="stylesheet" />
+		<link href="css/index.css" type="text/css" rel="stylesheet" />
+		<script src="libs/jquery-1.11.3.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/all_list.js"></script>
+		<script src="js/r_text.js"></script>
+		<script src="js/shopping_car.js"></script>
+		<script src="libs/jquery.cookie.js"></script>
+		<script>
+			$(function(){
+				
+				$(".all_cat a").attr("href","goods_list.html")
+				
+			})
+		</script>
+	</head>
+	<body>
+		
+		<!--顶部-->		
+		<div id="site-nav">
+			
+			<div class="sn-bd">
+				<span class="login-info">
+					<em class="em0"></em>
+					<em>欢迎光临本店！</em>
+					<a href="login.html" class="sn-login">请登录</a>
+					<a href="register.html" class="sn-register">免费注册</a>
+				</span>
+				
+				<ul class="sn-menu">
+					<li class="sn-menuli1">
+						<a href="#" class="mytaobao">我的信息<b></b></a>
+						<div class="menu-bd">
+							<a href="#">已买到的宝贝</a>
+							<a href="#">我的地址管理</a>
+						</div>
+					</li>
+					<li class="sn-menuli2">
+						<a href="#" class="myBrand">我关注的店铺</a>
+					</li>
+					<li class="sn-menuli3">
+						<a href="shopcar.html" class="sn-cart">购物车</a>
+					</li>
+					<li class="sn-menuli4">
+						<a href="" class="favorite">收藏夹<b></b></a>
+						<div class="menu-bd-2 menu-bd">
+							<a href="#">收藏的宝贝</a>
+							<a href="#">收藏的店铺</a>
+						</div>
+					</li>
+					<li class="sn-separator"></li>
+					<li class="sn-menuli5">
+						<a href="" class="sn-phone">手机版<b></b>
+						</a>
+						<ul class="menu-5 menu-bd">
+							<li class="app-xiazai">
+								<img src="img/app.jpg"/>
+							</li>
+						</ul>
+					</li>
+					<li class="sn-menuli6">
+						<a href="" class="sn-seller">商家支持<b></b></a>
+						<ul class="menu-6 menu-bd" style="width:122px;">
+							<li>
+								<h3>商家：</h3>
+								<a href="#">售后流程</a>
+								<a href="#">购物流程</a>
+								<a href="#">订购方式</a>
+								<a href="#">常见问题</a>
+								<a href="#">文章资讯</a>
+								<a href="#">聚惠卡</a>
+								<a href="#">认证商家</a>
+								<a href="#">商学院</a>
+								<a href="#">全面招商</a>
+							</li>
+							<li>
+								<h3>帮助：</h3>
+								<a href="#">帮助中心</a>
+							</li>
+						</ul>
+					</li>
+					<li class="sn-menuli7">
+						<a href="" class="sn-sitemap">网络导航</a><b></b>
+						<div class="menu-7 menu-bd">
+							<div class="site-hot site-cont">
+								<h2>产品分类<span>Product</span></h2>
+								<ul class="site-list">
+									<li><a href="#">食品生鲜</a></li>
+									<li><a href="#">服装服饰</a></li>
+									<li><a href="#">个护化妆</a></li>
+									<li><a href="#">手机数码</a></li>
+									<li><a href="#">家用电器</a></li>
+									<li><a href="#">家纺家居</a></li>
+									<li><a href="#">酒类饮料</a></li>
+									<li><a href="#">母婴用品</a></li>
+								</ul>
+							</div>
+							<div class="site-market site-cont">
+								<h2>店铺街<span>Market</span></h2>
+								<ul class="site-list">
+									<li><a href="#">精选</a></li>
+									<li><a href="#">女人</a></li>
+									<li><a href="#">男人</a></li>
+									<li><a href="#">家装</a></li>
+									<li><a href="#">母婴</a></li>
+									<li><a href="#">美妆</a></li>
+									<li><a href="#">美食</a></li>
+									<li><a href="#">数码</a></li>
+								</ul>
+								
+							</div>
+							<div class="site-cont site-brand">
+								<h2>关于我们<span>About</span></h2>
+								<ul class="site-list">
+									<li><a href="#">公司简介</a></li>
+									<li><a href="#">管理团队</a></li>
+									<li><a href="#">媒体报道</a></li>
+									<li><a href="#">领导关怀</a></li>
+									<li><a href="#">招贤纳士</a></li>								
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		
+		<div id="header">
+			<div class="headerLayout">
+				<h1 id="Logo" class="mall_logo">
+        			<a href="#" title="logo">
+        				<img src="img/logo.jpg"/>
+        			</a>
+        		</h1>
+				<div class="mall-search" id="mallSearch">
+					<ul class="search-type">
+						<li class="cur">宝贝</li>
+						<li>店铺</li>
+					</ul>
+					<form id="searchForm" class="mallSearch-form">
+						<div class="mallSearch-input">
+							<div class="s-combobox-input-wrap">
+								<input class="s-combobox-input" name="keywords" id="keyword" placeholder="请输入关键词" />
+							</div>
+
+							<input value="搜索" class="button" type="submit">
+
+						</div>
+					</form>
+					<ul class="hot-query">
+						<li style="border-left:none;">
+							<a href="#" title="灯饰">灯饰</a>
+						</li>
+						<li>
+							<a href="#" title="私房菜">私房菜</a>
+						</li>
+						<li>
+							<a href="#" title="丛台酒">丛台酒</a>
+						</li>
+						<li>
+							<a href="#" title="非凡旅游">非凡旅游</a>
+						</li>
+						<li>
+							<a href="#" title="家具">家具</a>
+						</li>
+						<li>
+							<a href="#" title="三星S6">三星S6</a>
+						</li>
+						<li>
+							<a href="#" title="苹果">苹果</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--头部导航-->
+		<div class="globa-nav">
+			<div class="w">
+				<div class="allGoodsCat Left">
+					<a href="#" title="查看全部商品分类" class="menuEvent">
+						<strong class="catName">全部商品分类</strong>
+						<i style="background-position: -428px -115px;"></i>
+					</a>
+					<div class="fenlei"></div>
+				</div>
+				<ul class="allMenu Left">
+					<li>
+						<a href="index.html" class="nav index" title="首页">首页</a>
+					</li>
+					<li>
+						<a href="#" class="nav" title="食品生鲜">食品生鲜</a>
+					</li>
+					<li>
+						<a href="#" class="nav" title="店铺街">店铺街</a>
+					</li>
+					<li>
+						<a href="#" class="nav" title="积分商城">积分商城</a>
+					</li>
+					<li>
+						<a href="#" class="nav" title="优惠活动">优惠活动</a>
+					</li>
+					<li>
+						<a href="#" class="nav" title="智能扫货">智能扫货</a>
+					</li>
+					<li>
+						<a href="#" class="nav" title="文章资讯">文章资讯</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<!--商品分类-->
+		<div class="w0 all_w0">
+			<div class="all_cat" style="background: #ffffff;filter: alpha(Opacity=80);
+	    background-color: rgba(255,255,255,.8); z-index: 105;">
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left">
+	    						<a href="#">食品生鲜</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">保健食品</a>
+	    						<a href="#">进口水果</a>
+	    						<a href="#">糖果巧克力</a>
+	    						<a href="#">牛奶乳品</a>
+	    						<a href="#">坚果炒货</a>
+	    						<a href="#">蜜饯果干</a>
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">保健食品：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="goods_list.html">进口水果：</a>
+									</div>
+									<div class="link1">
+										<a href="#">释迦芭乐</a>
+										<a href="#">樱桃车厘子</a>
+										<a href="#">芒果桃李</a>
+										<a href="#">龙眼荔枝</a>
+										<a href="#">小波</a>
+										<a href="#">奇异果猕猴桃</a>
+										<a href="#">凤梨蓝莓</a>
+										<a href="#">榴莲山竹</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">糖果巧克力：</a>
+									</div>
+									<div class="link1">
+										<a href="#">巧克力</a>
+										<a href="#">口香糖</a>
+										<a href="#">棒棒糖</a>
+										<a href="#">软糖</a>
+										<a href="#">奶糖</a>
+										<a href="#">QQ糖</a>
+										<a href="#">果冻</a>
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">牛奶乳品：</a>
+									</div>
+									<div class="link1">
+										<a href="#">常温奶</a>
+										<a href="#">乳饮料</a>
+										<a href="#">儿童奶</a>
+										<a href="#">酸奶</a>
+										<a href="#">豆奶</a>
+										<a href="#">低脂奶</a>
+										<a href="#">全脂奶</a>
+										<a href="#">成人奶粉</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">坚果炒货：</a>
+									</div>
+									<div class="link1">
+										<a href="#">核桃</a>
+										<a href="#">夏威夷果</a>
+										<a href="#">碧根果</a>
+										<a href="#">开心果</a>
+										<a href="#">腰果</a>
+										<a href="#">瓜子</a>
+										<a href="#">花生</a>
+										<a href="#">杏仁</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">蜜饯果干：</a>
+									</div>
+									<div class="link1">
+										<a href="#">红枣</a>
+										<a href="#">莓类</a>
+										<a href="#">葡萄干</a>
+										<a href="#">芒果干</a>
+										<a href="#">香蕉干</a>
+										<a href="#">山楂片</a>
+										<a href="#">橄榄</a>
+										<a href="#">其他</a>
+									</div>
+								</div>
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">三只松鼠</a>
+											</li>
+											<li>
+												<a href="#">楼兰密语</a>
+											</li>
+											<li>
+												<a href="#">百草味</a>
+											</li>
+											<li>
+												<a href="#">三元</a>
+											</li>
+											<li>
+												<a href="#">伊利</a>
+											</li>
+											<li>
+												<a href="#">肯德基</a>
+											</li>
+											<li>
+												<a href="#">必胜客</a>
+											</li>
+											<li>
+												<a href="#">西域美农</a>
+											</li>
+											<li>
+												<a href="#">美赞臣</a>
+											</li>
+											<li>
+												<a href="#">享爱.</a>
+											</li>
+											<li>
+												<a href="#">糖糖屋</a>
+											</li>
+											<li>
+												<a href="#">宝瑞淇</a>
+											</li>
+											<li>
+												<a href="#">费列罗</a>
+											</li>
+											<li>
+												<a href="#">Vega</a>
+											</li>
+											<li>
+												<a href="#">SUNSIDES</a>
+											</li>
+											<li>
+												<a href="#">Sainsbury's</a>
+											</li>
+											<li>
+												<a href="#">圣牧</a>
+											</li>
+											<li>
+												<a href="#">纽麦福</a>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left" style="background-position:0px -24px;;">
+	    						<a href="#">服装服饰</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">女装馆</a>
+	    						<a href="#">T恤</a>
+	    						<a href="#">中长款半身裙</a>
+	    						<a href="#">夹克/风衣</a>
+	    						<a href="#">男装馆</a>
+	    						<a href="#">内衣馆</a>
+	    						<a href="#">户外鞋服</a>
+	    						<a href="#">鞋帽</a>
+	    						<a href="#">箱包馆</a>
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1" style="top:30px;">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">女装馆：</a>
+									</div>
+									<div class="link1">
+
+										<a href="#">连衣裙</a>
+										<a href="#">连体裤</a>
+										<a href="#">棉麻T恤</a>
+										<a href="#">时尚套装</a>
+										<a href="#">复古旗袍</a>
+										<a href="#">牛仔裤</a>
+										<a href="#">短外套</a>
+										<a href="#">羽绒服</a>
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">T恤：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">中长款半身裙：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">夹克/风衣：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">男装馆：</a>
+									</div>
+									<div class="link1">
+										<a href="#">休闲裤</a>
+										<a href="#">牛仔裤</a>
+										<a href="#">夹克</a>
+										<a href="#">风衣</a>
+										<a href="#">针织衫</a>
+										<a href="#">长袖衬衫</a>
+										<a href="#">休闲短裤</a>
+										<a href="#">POLO衫</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">内衣馆：</a>
+									</div>
+									<div class="link1">
+										<a href="#">薄款文胸</a>
+										<a href="#">夏季睡衣</a>
+										<a href="#">瘦腿袜</a>
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">户外鞋服：</a>
+									</div>
+									<div class="link1">
+										<a href="#">跑步鞋</a>
+										<a href="#">篮球鞋</a>
+										<a href="#">帆布鞋</a>
+										<a href="#">男士皮鞋</a>
+										<a href="#">迷彩裤</a>
+										<a href="#">沙滩鞋</a>
+										<a href="#">钓鱼服</a>
+										<a href="#">登山鞋</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">鞋帽：</a>
+									</div>
+									<div class="link1">
+										<a href="#">高跟凉拖</a>
+										<a href="#">平底鞋</a>
+										<a href="#">高跟鞋</a>
+										<a href="#">坡跟单鞋</a>
+										<a href="#">浅口单鞋</a>
+										<a href="#">帆布鞋</a>
+										<a href="#">女士皮鞋</a>
+										<a href="#">松糕鞋</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">箱包馆：</a>
+									</div>
+									<div class="link1">
+										<a href="#">单肩女包</a>
+										<a href="#">手提女包</a>
+										<a href="#">女士钱包</a>
+										<a href="#">男士双肩</a>
+										<a href="#">男士钱包</a>
+										<a href="#">旅行箱</a>
+										<a href="#">拉杆箱</a>
+										<a href="#">拉杆包</a>
+									</div>
+								</div>
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">泸州老窖</a>
+											</li>
+											<li>
+												<a href="#">茵曼（INMAN）</a>
+											</li>
+											<li>
+												<a href="#">缪诗</a>
+											</li>
+											<li>
+												<a href="#">伊芙丽</a>
+											</li>
+											<li>
+												<a href="#">达芙妮</a>
+											</li>
+											<li>
+												<a href="#">卓诗尼</a>
+											</li>
+											<li>
+												<a href="#">曼妮芬（ManniForm）</a>
+											</li>
+											<li>
+												<a href="#">溢彩年华</a>
+											</li>
+											<li>
+												<a href="#">佐丹奴</a>
+											</li>
+											<li>
+												<a href="#">七匹狼</a>
+											</li>
+											<li>
+												<a href="#">伊莱克斯</a>
+											</li>
+											<li>
+												<a href="#">雪花</a>
+											</li>
+											<li>
+												<a href="#">其他</a>
+											</li>
+
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left" style="background-position:0px -48px;">
+	    						<a href="#">个护化妆</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">美容护肤</a>
+	    						<a href="#">香水彩妆</a>
+	    						<a href="#">面部护肤</a>
+	    						<a href="#">洗发护发</a>
+	    						<a href="#">身体护肤</a>
+	    						<a href="#">口腔护理</a>
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1" style="top:95px">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">美容护肤：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">香水彩妆：</a>
+									</div>
+									<div class="link1">
+										<a href="#">香水</a>
+										<a href="#">底妆</a>
+										<a href="#">腮红</a>
+										<a href="#">眼部</a>
+										<a href="#">唇部</a>
+										<a href="#">美甲</a>
+										<a href="#">美容工具</a>
+										<a href="#">护肤套装</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">面部护肤：</a>
+									</div>
+									<div class="link1">
+										<a href="#">清洁</a>
+										<a href="#">护肤</a>
+										<a href="#">面膜</a>
+										<a href="#">剃须</a>
+										<a href="#">套装</a>
+										
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">洗发护发：</a>
+									</div>
+									<div class="link1">
+										<a href="#">洗发</a>
+										<a href="#">护发</a>
+										<a href="#">染发</a>
+										<a href="#">造型</a>
+										<a href="#">假发</a>
+										<a href="#">套装</a>
+								
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">身体护肤：</a>
+									</div>
+									<div class="link1">
+										<a href="#">沐浴</a>
+										<a href="#">润肤</a>
+										<a href="#">颈部</a>
+										<a href="#">手足</a>
+										<a href="#">纤体塑形</a>
+										<a href="#">美胸</a>
+										<a href="#">套装</a>
+							
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">口腔护理：</a>
+									</div>
+									<div class="link1">
+										<a href="#">牙膏/牙粉</a>
+										<a href="#">牙刷/牙线</a>
+										<a href="#">漱口水</a>
+										<a href="#">套装</a>
+								
+									</div>
+								</div>
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">资生堂</a>
+											</li>
+											<li>
+												<a href="#">雅诗兰黛</a>
+											</li>
+											<li>
+												<a href="#">SK-ll</a>
+											</li>
+											<li>
+												<a href="#">相宜本草</a>
+											</li>
+											<li>
+												<a href="#">兰芝</a>
+											</li>
+											<li>
+												<a href="#">罗莱</a>
+											</li>
+											<li>
+												<a href="#">韩束</a>
+											</li>
+											<li>
+												<a href="#">碧欧泉</a>
+											</li>
+											<li>
+												<a href="#">Dior</a>
+											</li>
+											<li>
+												<a href="#">珀莱雅</a>
+											</li>
+											<li>
+												<a href="#">CK</a>
+											</li>
+											<li>
+												<a href="#">chanel</a>
+											</li>
+											
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left" style="background-position:0px -72px;">
+	    						<a href="#">手机数码</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">网卡</a>
+	    						<a href="#">热卖手机</a>
+	    						<a href="#">手机配件</a>
+	    						<a href="#">数码影音</a>
+	    						<a href="#">智能设备</a>
+	    						<a href="#">电脑</a>
+	    	
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1" style="top:160px;">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">网卡：</a>
+									</div>
+									<div class="link1">
+										
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">热卖手机：</a>
+									</div>
+									<div class="link1">
+										<a href="#">三星盖乐世</a>
+										<a href="#">iPhone</a>
+										<a href="#">小米特供</a>
+										<a href="#">魅族手机</a>
+										<a href="#">华为荣耀</a>
+										<a href="#">联通4G</a>
+										<a href="#">电信4G</a>
+										<a href="#">移动4G</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">手机配件：</a>
+									</div>
+									<div class="link1">
+										<a href="#">电池</a>
+										<a href="#">移动电源</a>
+										<a href="#">蓝牙耳机</a>
+										<a href="#">充电器</a>
+										<a href="#">创意配件</a>
+										<a href="#">手机饰品</a>
+										<a href="#">手机耳机</a>
+										<a href="#">保护套</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">数码影音：</a>
+									</div>
+									<div class="link1">
+										<a href="#">数码相机</a>
+										<a href="#">单反相机</a>
+										<a href="#">拍立得</a>
+										<a href="#">运动相机</a>
+										<a href="#">摄像机</a>
+										<a href="#">户外器材</a>
+										<a href="#">数码相框</a>
+										<a href="#">影棚器材</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">智能设备：</a>
+									</div>
+									<div class="link1">
+										<a href="#">智能手环</a>
+										<a href="#">智能手表</a>
+										<a href="#">智能眼镜</a>
+										<a href="#">运动跟踪器</a>
+										<a href="#">智能家居</a>
+										<a href="#">体感车</a>
+								
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">电脑：</a>
+									</div>
+									<div class="link1">
+										<a href="#">笔记本</a>
+										<a href="#">台式机</a>
+										<a href="#">打印机</a>
+
+									</div>
+								</div>
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">小米</a>
+											</li>
+											<li>
+												<a href="#">海信</a>
+											</li>
+											<li>
+												<a href="#">努比亚</a>
+											</li>
+											<li>
+												<a href="#">乐檬</a>
+											</li>
+											<li>
+												<a href="#">中兴</a>
+											</li>
+											<li>
+												<a href="#">伊莱克斯</a>
+											</li>
+											<li>
+												<a href="#">溢彩年华</a>
+											</li>
+											<li>
+												<a href="#">西域美农</a>
+											</li>
+											<li>
+												<a href="#">苹果</a>
+											</li>
+											<li>
+												<a href="#">艾力斯特</a>
+											</li>
+											<li>
+												<a href="#">Dior</a>
+											</li>
+											<li>
+												<a href="#">华为</a>
+											</li>
+											<li>
+												<a href="#">五粮液</a>
+											</li>
+
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left" style="background-position:0px -96px;">
+	    						<a href="#">家用电器</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">大 家 电</a>
+	    						<a href="#">大家电</a>
+	    						<a href="#">生活电器</a>
+	    						<a href="#">厨房电器</a>
+	    						<a href="#">个护健康</a>
+	    						<a href="#">五金家装</a>
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1" style="top:225px;">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">大 家 电：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">大家电：</a>
+									</div>
+									<div class="link1">
+										<a href="#">平板电视</a>
+										<a href="#">空调冰箱</a>
+										<a href="#">洗衣机</a>
+										<a href="#">家庭影院</a>
+										<a href="#">烟机/灶具</a>
+										<a href="#">热水器</a>
+										<a href="#">消毒柜/洗碗机</a>
+										<a href="#">冷柜/冰吧</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">生活电器：</a>
+									</div>
+									<div class="link1">
+										<a href="#">电风扇</a>
+										<a href="#">净化器</a>
+										<a href="#">加湿器</a>
+										<a href="#">吸尘器</a>
+										<a href="#">挂烫机/熨斗</a>
+										<a href="#">取暖电器</a>
+										<a href="#">饮水机</a>
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">厨房电器：</a>
+									</div>
+									<div class="link1">
+										<a href="#">电饭煲</a>
+										<a href="#">微波炉</a>
+										<a href="#">电磁炉</a>
+										<a href="#">电饼铛/烧烤盘</a>
+										<a href="#">电炖锅</a>
+										<a href="#">果蔬解毒机</a>
+										<a href="#">养生壶/煎药壶</a>
+										<a href="#">其它厨房电器</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">个护健康：</a>
+									</div>
+									<div class="link1">
+										<a href="#">剃须刀</a>
+										<a href="#">电吹风</a>
+										<a href="#">按摩椅</a>
+										<a href="#">足浴盆</a>
+										<a href="#">健康秤/厨房秤</a>
+										<a href="#">血糖仪</a>
+										<a href="#">计步器/脂肪检测</a>
+										<a href="#">其它健康电器</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">五金家装：</a>
+									</div>
+									<div class="link1">
+										<a href="#">电动工具</a>
+										<a href="#">手动工具</a>
+										<a href="#">厨卫五金</a>
+										<a href="#">家具五金</a>
+										<a href="#">电工电料</a>
+										<a href="#">监控安防</a>
+									
+									</div>
+								</div>
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">美的</a>
+											</li>
+											<li>
+												<a href="#">格兰仕</a>
+											</li>
+											<li>
+												<a href="#">西门子</a>
+											</li>
+											<li>
+												<a href="#">海尔</a>
+											</li>
+											<li>
+												<a href="#">格力</a>
+											</li>
+											<li>
+												<a href="#">三星</a>
+											</li>
+											<li>
+												<a href="#">伊莱克斯</a>
+											</li>
+											<li>
+												<a href="#">LG</a>
+											</li>
+											<li>
+												<a href="#">爱仕达</a>
+											</li>
+											
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left" style="background-position:0px -120px;;">
+	    						<a href="#">家居日用</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">家纺</a>
+	    						<a href="#">家具</a>
+	    						<a href="#">厨具</a>
+	    						<a href="#">灯具</a>
+	    						<a href="#">家装软饰</a>
+	    						<a href="#">生活日用</a>
+	    						<a href="#">办公用品</a>
+	    					
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1" style="top:290px;">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">家纺：</a>
+									</div>
+									<div class="link1">
+
+										<a href="#">床品套件</a>
+										<a href="#">被子</a>
+										<a href="#">蚊帐</a>
+										<a href="#">凉席</a>
+										<a href="#">床单被罩</a>
+										<a href="#">毛巾浴巾</a>
+										<a href="#">床垫/床褥</a>
+										<a href="#">窗帘/窗纱</a>
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">家具：</a>
+									</div>
+									<div class="link1">
+										<a href="#">卧室家具</a>
+										<a href="#">客厅家具</a>
+										<a href="#">餐厅家具</a>
+										<a href="#">书房家具</a>
+										<a href="#">储物家具</a>
+										<a href="#">阳台/户外</a>
+										<a href="#">沙发</a>
+										<a href="#">鞋架/衣帽架</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">厨具：</a>
+									</div>
+									<div class="link1">
+										<a href="#">烹饪锅具</a>
+										<a href="#">刀剪菜板</a>
+										<a href="#">厨房配件</a>
+										<a href="#">水具酒具</a>
+										<a href="#">餐具</a>
+										<a href="#">茶具/咖啡具</a>
+										
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">灯具：</a>
+									</div>
+									<div class="link1">
+										<a href="#">台灯</a>
+										<a href="#">吸顶灯</a>
+										<a href="#">筒灯射灯</a>
+										<a href="#">LED</a>
+										<a href="#">落地灯</a>
+										<a href="#">应急灯/手电</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">家装软饰：</a>
+									</div>
+									<div class="link1">
+										<a href="#">>桌布/罩件</a>
+										<a href="#">地毯地垫</a>
+										<a href="#">沙发垫套/椅垫</a>
+										<a href="#">帘艺隔断</a>
+										<a href="#">相框/照片墙</a>
+										<a href="#">装饰字画</a>
+										<a href="#">墙贴/装饰贴</a>
+										<a href="#">摆件花瓶</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">生活日用：</a>
+									</div>
+									<div class="link1">
+										<a href="#">收纳用品</a>
+										<a href="#">雨伞雨具</a>
+										<a href="#">浴室用品</a>
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">办公用品：</a>
+									</div>
+									<div class="link1">
+										<a href="#">办公桌椅</a>
+										<a href="#">笔/本/文件夹</a>
+										<a href="#">办公耗材</a>
+										<a href="#">其他</a>
+								
+									</div>
+								</div>
+				
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">Dior</a>
+											</li>
+											<li>
+												<a href="#">高丝</a>
+											</li>
+											<li>
+												<a href="#">韩束</a>
+											</li>
+											<li>
+												<a href="#">小米</a>
+											</li>
+											<li>
+												<a href="#">摩托罗拉</a>
+											</li>
+											<li>
+												<a href="#">金立</a>
+											</li>
+											<li>
+												<a href="#">苹果</a>
+											</li>
+											<li>
+												<a href="#">楼兰密语</a>
+											</li>
+											<li>
+												<a href="#">猫人</a>
+											</li>
+											<li>
+												<a href="#">稻草人</a>
+											</li>
+											<li>
+												<a href="#">爱华仕</a>
+											</li>
+											<li>
+												<a href="#">水星家纺</a>
+											</li>
+											<li>
+												<a href="#">其他</a>
+											</li>
+
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left" style="background-position:0px -144px;">
+	    						<a href="#">酒类饮料</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">酒水</a>
+	    						<a href="#">冲调饮品</a>
+	    						<a href="#">饮料饮品</a>
+	    						<a href="#">茗茶</a>
+
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1" style="top:335px;">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">酒水：</a>
+									</div>
+									<div class="link1">
+										<a href="#">白酒</a>
+										<a href="#">啤酒</a>
+										<a href="#">葡萄酒/果酒</a>
+										<a href="#">黄酒/米酒</a>
+										<a href="#">养生酒</a>
+										<a href="#">预调酒</a>
+										
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">冲调饮品：</a>
+									</div>
+									<div class="link1">
+										<a href="#">冲饮品</a>
+										<a href="#">冲调食品</a>
+										<a href="#">蜂蜜</a>
+										<a href="#">成人奶粉</a>
+										<a href="#">豆浆/豆奶粉</a>
+										<a href="#">茶叶</a>
+										<a href="#">奶茶</a>
+										<a href="#">果味冲调</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">饮料饮品：</a>
+									</div>
+									<div class="link1">
+										<a href="#">果蔬汁</a>
+										<a href="#">茶饮料</a>
+										<a href="#">碳酸饮料</a>
+										<a href="#">功能饮料</a>
+										<a href="#">纯牛奶</a>
+										<a href="#">酸奶</a>
+										<a href="#">风味奶</a>
+										<a href="#">植物蛋白饮料</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">茗茶：</a>
+									</div>
+									<div class="link1">
+										<a href="#">铁观音</a>
+										<a href="#">普洱</a>
+										<a href="#">龙井</a>
+										<a href="#">绿茶</a>
+										<a href="#">红茶</a>
+										<a href="#">花果茶</a>
+										<a href="#">养生茶</a>
+										<a href="#">其他茶</a>
+									</div>
+								</div>
+								
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">丛台酒</a>
+											</li>
+											<li>
+												<a href="#">雪花</a>
+											</li>
+											<li>
+												<a href="#">哈尔滨</a>
+											</li>
+											<li>
+												<a href="#">王老吉</a>
+											</li>
+											<li>
+												<a href="#">郎酒</a>
+											</li>
+											<li>
+												<a href="#">蒙牛</a>
+											</li>
+											<li>
+												<a href="#">雀氏</a>
+											</li>
+											<li>
+												<a href="#">糖糖屋</a>
+											</li>
+											<li>
+												<a href="#">统一</a>
+											</li>
+											<li>
+												<a href="#">合生元</a>
+											</li>
+											<li>
+												<a href="#">锐澳</a>
+											</li>
+											<li>
+												<a href="#">光明</a>
+											</li>
+											
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list">
+					<dl class="cat">
+						<dt class="catName">
+	    					<strong class="cat1 Left" style="background-position:0px -168px;">
+	    						<a href="#">母婴用品</a>
+	    					</strong>
+	    					<p>
+	    						<a href="#">尿裤湿巾</a>
+	    						<a href="#">玩具</a>
+	    						<a href="#">婴儿尿裤</a>
+	    						<a href="#">孕妇装</a>
+	    						<a href="#">孕婴奶粉</a>
+	    						<a href="#">营养/辅食</a>
+	    						<a href="#">孕婴洗护</a>
+	    						<a href="#">喂养用品</a>
+	    						<a href="#">车床/床品</a>
+	    					</p>
+	    				</dt>
+					</dl>
+					<div id="JS_side_cat_list_1" class="hideMap Map_positon1" style="top:420px;">
+						<div class="topMap clearfix">
+							<div class="subCat clearfix">
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">尿裤湿巾：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">玩具：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">婴儿尿裤：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">孕妇装：</a>
+									</div>
+									<div class="link1">
+
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">孕婴奶粉：</a>
+									</div>
+									<div class="link1">
+										<a href="#">特配奶粉</a>
+										<a href="#">孕妈奶粉</a>
+										<a href="#">pre段</a>
+										<a href="#">1段</a>
+										<a href="#">2段</a>
+										<a href="#">3段</a>
+									
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">营养/辅食：</a>
+									</div>
+									<div class="link1">
+										<a href="#">米粉</a>
+										<a href="#">果汁/泥</a>
+										<a href="#">面食类</a>
+										<a href="#">宝宝零食</a>
+										<a href="#">清火开胃</a>
+										<a href="#">益生菌</a>
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">孕婴洗护：</a>
+									</div>
+									<div class="link1">
+										<a href="#">洗衣液/皂</a>
+										<a href="#">宝宝沐浴</a>
+										<a href="#">儿童防晒</a>
+										<a href="#">防蚊/驱蚊</a>
+										<a href="#">爽身粉</a>
+										<a href="#">奶瓶清洗</a>
+										<a href="#">孕妇护肤</a>
+									
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">喂养用品：</a>
+									</div>
+									<div class="link1">
+										<a href="#">奶嘴奶瓶</a>
+										<a href="#">驱蚊用品</a>
+										<a href="#">浴室用品</a>
+										<a href="#">水壶/水杯</a>
+										<a href="#">吸奶器</a>
+										<a href="#">理发器</a>
+										<a href="#">防溢乳垫</a>
+										
+									</div>
+								</div>
+								<div class="list1 clearfix">
+									<div class="cat1">
+										<a href="#">车床/床品：</a>
+									</div>
+									<div class="link1">
+										<a href="#">安全座椅</a>
+										<a href="#">手推车</a>
+										<a href="#">婴儿床</a>
+										<a href="#">餐椅</a>
+										<a href="#">三轮车</a>
+										<a href="#">儿童家具</a>
+										<a href="#">睡袋/抱被</a>
+										<a href="#">凉席/蚊帐</a>
+									</div>
+								</div>
+							</div>
+							<div class="subBrand">
+								<dl class="category-brands">
+									<dt>推荐品牌</dt>
+									<dd>
+										<ul>
+											<li>
+												<a href="#">美赞臣</a>
+											</li>
+											<li>
+												<a href="#">合生元</a>
+											</li>
+											<li>
+												<a href="#">资生堂</a>
+											</li>
+											<li>
+												<a href="#">伊利</a>
+											</li>
+											<li>
+												<a href="#">蒙牛</a>
+											</li>
+											<li>
+												<a href="#">茵曼（INMAN）</a>
+											</li>
+											<li>
+												<a href="#">皇家宝贝</a>
+											</li>
+											<li>
+												<a href="#">青蛙王子</a>
+											</li>
+											
+
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--底部-->		
+		<div class="site-footer">
+		  <div class="container wrapper">
+		    <div class="footer-service">
+		      <ul class="list-service clearfix">
+		        <li> <a class="ic1" href=""> <strong>1小时快修服务</strong> </a> </li>
+		        <li> <a class="ic2" href=""><strong>7天无理由退货</strong> </a> </li>
+		        <li> <a class="ic3" href=""> <strong>15天免费换货</strong> </a> </li>
+		        <li> <a class="ic4" href=""> <strong>满150元包邮</strong> </a> </li>
+		        <li> <a class="ic5" href=""> <strong>460余家售后网点</strong> </a> </li>
+		      </ul>
+		    </div>
+		    <div class="footer-links clearfix"> 
+		        <dl class="col-links col-links-first">
+		        	<dt>关于我们 </dt>
+		                <dd><a target="_blank">隐私保护</a></dd>
+		                <dd><a target="_blank">公司简介</a></dd>
+		                <dd><a target="_blank">管理团队</a></dd>
+		                <dd><a target="_blank">媒体报道</a></dd>
+		                <dd><a target="_blank">领导关怀</a></dd>
+		                <dd><a target="_blank">招贤纳士</a></dd>
+		              </dl>
+		        <dl class="col-links ">
+		        	<dt>新手上路 </dt>
+		                <dd><a target="_blank">售后流程</a></dd>
+		                <dd><a target="_blank">购物流程</a></dd>
+		                <dd><a target="_blank">订购方式</a></dd>
+		                <dd><a target="_blank">商品评价</a></dd>
+		                <dd><a target="_blank">在线支付</a></dd>
+		              </dl>
+		            <dl class="col-links ">
+		        <dt>配送方式 </dt>
+		                <dd><a rel="nofollow" href="help.php?id=15" target="_blank">货到付款区域</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=16" target="_blank">配送查询</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=17" target="_blank">配送时间</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=45" target="_blank">配送收费标准</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=69" target="_blank">上门自提</a></dd>
+		              </dl>
+		            <dl class="col-links ">
+		        <dt>购物指南</dt>
+		                <dd><a rel="nofollow" href="help.php?id=18" target="_blank">常见问题</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=66" target="_blank">会员服务</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=67" target="_blank">红包使用</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=68" target="_blank">返现使用</a></dd>
+		              </dl>
+		            <dl class="col-links ">
+		        <dt>售后服务</dt>
+		                <dd><a rel="nofollow" href="help.php?id=21" target="_blank">退换货原则</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=22" target="_blank">售后服务保证</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=42" target="_blank">退换货流程</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=73" target="_blank">联系客服</a></dd>
+		                <dd><a rel="nofollow" href="help.php?id=74" target="_blank">商品验收</a></dd>
+		              </dl>
+		            <div class="col-contact">
+		        <p class="phone">400-0310-707</p>
+		        <p>周一至周五 9:00-17:30<br>
+		          （仅收市话费）</p>
+		        <a rel="nofollow" class="btn2 btn-primary btn-small" href="javascript:void(0);" style="color:#fff">24小时在线客服</a> </div>
+		    </div>
+		        
+		         <div class="footerPro">
+		             <div class="sjtj_title"><img src="img/sjtj.jpg" /></div>
+		             <div class="sjtj zcyh">
+		                 <div><img src="img/sjtj_1.jpg" /></div>
+		                 <div><span class="tjname">注册用户</span><span class="tjnum">416955人</span></div>
+		             </div>
+		             <div class="sjtj spsl">
+		                 <div><img src="img/sjtj_2.jpg" /></div>
+		                 <div><span class="tjname">商品数量</span><span class="tjnum">2910件</span></div>
+		             </div>
+		             <div class="sjtj rzsh">
+		                   <div><img src="img/sjtj_3.jpg" /></div>
+		                   <div><span class="tjname">入驻商户</span><span class="tjnum">119家</span></div>
+		             </div>
+		             <div class="sjtj ddsl">
+		                  <div><img src="img/sjtj_4.jpg" /></div>
+		                  <div><span class="tjname">订单数量</span><span class="tjnum">61个</span></div>
+		             </div>
+		             <div class="sjtj ddsl">
+		                   <div><img src="img/sjtj_5.jpg" /></div>
+		                   <div><span class="tjname">周交易额</span><span class="tjnum">98.90元</span></div>
+		             </div>
+		             <div class="sjtj ddsl">
+		                   <div><img src="img/sjtj_6.jpg" /></div>
+		                   <div><span class="tjname">访问总量</span><span class="tjnum">4305087人次</span></div>
+		             </div>
+		         </div>
+		          
+		    <div class="footer-info clearfix" >
+		      <div class="info-text">
+		       
+		        <p>友情链接：
+		                <a href="#" target="_blank" title="邢台亿搜人才网">邢台亿搜人才网</a><span class="sep">|</span>
+		               <a href="#" target="_blank" title="邯郸中小企业网">邯郸中小企业网</a><span class="sep">|</span>       
+		               <a href="#" target="_blank" title="亿搜人才网">亿搜人才网</a><span class="sep">|</span>       
+		               <a href="#" target="_blank" title="众贤服务网">众贤服务网</a><span class="sep">|</span>       
+		               <a href="#" target="_blank" title="快递查询">快递查询</a>            
+		        </p>
+		                
+		 	
+		 	  		<!--最底部导航-->
+		 	  		
+					<div id="site-footer">
+						<div class="wrapper">
+							<div class="footer-info">
+								<div class="info-text">
+									<p class="nav_bottom">
+										<a href="#">关于我们</a><em>|</em>
+										<a href="#">管理团队</a><em>|</em>
+										<a href="#">商家入驻</a><em>|</em>
+										<a href="#">媒体报道</a><em>|</em>
+										<a href="#">站点地图</a><em>|</em>
+										<a href="#">招贤纳士</a><em>|</em>
+										<a href="#">帮助中心</a> 
+				                           ICP备案证书号:
+										<a href="#">冀ICP备14019346号-1</a>
+									</p>
+									<p>
+										<a href="#">© 2005-2016 聚惠买商城 版权所有，并保留所有权利。</a> 
+										<a href="#">邯郸市开发区世纪大街2号才智港 </a> 
+										<a href="#">Tel: 400-0310-707</a> 
+										<a href="#"> E-mail: juhuimai@126.com</a> 
+									</p>
+								</div>
+								
+							</div>	
+						</div>
+					</div>
+
+		      
+		      </div>      
+		    </div>    
+		  </div>
+		</div>
+		
+		<!--右侧栏-->
+		<div class="sidebar-nav" style="height: 100%; top: 0px; bottom: auto;">
+			<div class="mods">
+				<div class="middle-items">
+					<div id="right_login" class="mod_head mod">
+						<a class="btn_head"><img src="img/user_head.png"/></a>
+						<div class="dropdown" style="opacity: 1; margin-right: 0px; display: none;">
+							<form name="formLogin">
+								<div class="form">
+									<h2>
+										<strong>请登录</strong>
+										<span>还没有账号？<a class="right_register" href="register.html">立即注册</a></span>
+									</h2>
+									<div class="item">
+										<span class="label">账号</span>
+										<div>
+											<input class="text" name="username" type="text" id="r_name"/>
+										</div>
+									</div>
+									<div class="item">
+										<span class="label">密码</span>
+										<div>
+											<input class="text" id="r_password" name="username" type="password"/>
+										</div>
+									</div>
+									<div class="item" id="autoentry">
+										<div class="safety">
+											<input id="remember" class="checkbox" value="1" type="checkbox"/>
+											<label class="mar-b" for="remember">记住密码</label>
+											<a class="forget_password">忘记密码？</a>
+										</div>
+									</div>
+									<div class="item">
+										<input name="submit" id="loginsubmit" class="btn-img" value="立即登录" type="button"/>
+									</div>
+								</div>
+							</form>
+							<span class="cart_arrow" style="background:none;border:none">
+								<b class="arrow-1"></b>
+								<b class="arrow-2"></b>
+							</span>
+						</div>
+					</div>
+					<div class="mod online-service J-stie-68">
+						<a class="btn">在 线销 售</a>
+						<div class="dropdown" style="opacity: 1; margin-right: 0px; display: none;">
+							<div class="head clearfix">
+								<h3 class="grid-c-l">在线销售顾问</h3>
+							</div>
+							<div class="button-bar">
+								<div class="customer_service">
+									<dl class="sidebar_subdl">
+										<dd id="qqdd">
+											<img src="img/web_logo.png" width="30" height="29"/>
+											<a style="color:#000000; font-size:14px; margin-left:10px; vertical-align:middle">在线客服</a>
+										</dd>
+										<dd id="qqdd">
+											<img src="img/qq1.gif" width="30" height="29"/>
+											<a style="color:#000000; font-size:14px; margin-left:10px; vertical-align:middle">客服主管</a>
+										</dd>
+									</dl>
+									<div class="clearbox"></div>
+								</div>
+							</div>
+							<span class="cart_arrow" style="background:none;border:none">
+								<b class="arrow-1"></b>
+								<b class="arrow-2"></b>
+							</span>
+						</div>
+					</div>
+					<div class="mod vote_list J-stie-68">
+						<a class="btn">
+							<table>
+								<tbody>
+									<tr>
+										<td><i></i><em>调 查</em></td>
+									</tr>
+									<tr class="cr">
+										<td>在 线<br/>调 查</td>
+									</tr>
+								</tbody>
+							</table>
+						</a>
+						<div class="dropdown" style="opacity: 1; margin-right: 0px; display: none;">
+							<div class="head clearfix">
+				            	<h3 class="grid-c-l">在线调查问卷</h3>
+				         	</div>
+				         	<span class="cart_arrow" style="background:none;border:none">
+								<b class="arrow-1"></b>
+								<b class="arrow-2"></b>
+							</span>
+						</div>
+					</div>
+					<div id="ECS_CARTINFO" class="mod reserve" style="height:135px;">
+						<form id="formCart" name="formCart">
+							<a class="btn" style="height:135px; padding-top:5px; color:#fff;" id="collectBox"> 
+								<i></i> 购<br>物<br>车<br><span style="margin-top:7px;">0</span>
+							</a>
+							<div id="J-flow-drop" class="dropdown" style="opacity: 1; margin-right: 0px; display: none;">
+								<div class="bar clearfix">
+									<div class="tip grid-c-l">共<span class="count">0</span>件宝贝</div>
+									<div class="btn-bar grid-c-r"><a class="submit-btn" href="shopcar.html">去购物车结算</a></div>
+								</div>
+								<div class="cart_goods">
+									<div class="cart_goods_list">
+										<ul class="unstyled">
+											<!--<li>
+												<a>
+													<img src="img/5_thumb_G_1437502904492.jpg"/><h4>半壳扇贝 扇贝肉 1000g/新鲜扇贝冷冻烧烤海...</h4>
+													<span>58.0<strong style="margin:0 7px;">×</strong>1</span>
+												</a>
+												<i class="del-btn" title="删除">×</i>
+											</li>-->
+										</ul>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="mod traffic">
+						<span class="btn">
+							<table>
+								<tbody>
+									<tr><td><i></i><em>关 注</em></td></tr>
+									<tr class="cr"><td><a class="btn">关 注<br/>店 铺</a></td></tr>
+								</tbody>
+							</table>
+						</span>
+					</div>
+					<div class="mod insure" id="collectGoods">
+						<span class="btn">
+							<table>
+								<tbody>
+									<tr><td><i></i><em>收 藏</em></td></tr>
+									<tr class="cr"><td><a class="btn">收 藏<br/>商 品</a></td></tr>
+								</tbody>
+							</table>
+						</span>
+					</div>
+					<div class="mod  qrcode J-stie-68">
+						<a class="btn">
+							<table>
+								<tbody>
+									<tr><td><i></i></td></tr>
+									<tr class="cr"><td>官 方<br/>微 信</td></tr>
+								</tbody>
+							</table>
+						</a>
+						<div class="dropdown  dropdown_t" style="opacity: 1; margin-right: 0px; display: none;"> 
+							<span></span>
+          					<p>扫描二维码，码上有礼！</p>
+          					<span class="cart_arrow" style="background:none;border:none">
+          						<b class="arrow-1"></b> 
+          						<b class="arrow-2"></b>
+          					</span> 
+						</div>
+					</div>
+				</div>
+				<div class="bottom-items">
+					<div class="mod top">
+						<a class="btn">
+							<table>
+								<tbody>
+									<tr>
+										<td><i></i></td>
+									</tr>
+									<tr class="cr">
+										<td>回 到<br/>顶 部</td>
+									</tr>
+								</tbody>
+							</table>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

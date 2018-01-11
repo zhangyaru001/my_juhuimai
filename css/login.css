@@ -1,0 +1,247 @@
+
+.Logo-r{
+	height: 95px;
+	width: 100%;
+}
+.Logo-info-r{
+	width:920px;
+	margin:0 auto;
+	position:relative;
+}
+.Logo-info-r a{
+	display: block;
+}
+.Logo-info-r .logo{
+	width: 290px;
+	height: 80px;
+	background: url(../img/logo2.jpg) no-repeat;
+	float: left;
+}
+.Logo-info-r .findpw{
+	border-left:1px solid #ddd;
+	width:290px;
+	height:44px;
+	font-size:28px;
+	margin:26px 0 0 15px;
+	float: left;
+	padding:0 15px;
+	color: #666666;
+	line-height:44px;
+}
+.Logo-info-r .qq,.Logo-info-r .sina,.Logo-info-r .weixin{
+	background: url(../img/login.png) no-repeat;
+	width: 23px;
+	height: 23px;
+	background-position: -12px -10px;
+	margin: 35px 0px 0 20px;
+	float: right;
+}
+.Logo-info-r .sina{
+	background-position: -64px -10px;
+}
+.Logo-info-r .weixin{
+	background-position:  -123px -10px;
+}
+
+/*登录左边图片*/
+.w{
+	width: 990px;
+	padding: 0;
+	margin: 0 auto;
+	position: relative;
+	margin-top:20px;
+	margin-bottom: 30px;
+
+}
+.w .mcon{
+	margin-bottom: 20px;
+	width: 990px;
+	overflow: hidden;
+	position: relative;
+	height:442px;
+}
+.w .mcon #reg-pic{
+	position: absolute;
+	background: url(../img/loginPic.jpg) no-repeat 0;
+	width: 605px;
+	height: 430px;
+	left: -605px;
+	/*top: 0px;
+	 left:0;*/
+}
+/*登录表单*/
+
+#login-box{
+	position: absolute;
+	top: 0px;
+	right: -385px;
+	width: 385px;
+	
+}
+#login-box h2{
+    height: 30px;
+    line-height: 30px;
+    font-style:normal;
+}
+#login-box h2 span{
+	font-size: 12px;
+	float: right;
+	font-weight: normal;
+}
+#login-box h2 span a,.safety a{
+	float: right;
+	color: #e4393c;
+	text-decoration: none;
+}
+#login-box h2 span a:hover,.safety a:hover{
+	text-decoration: underline;
+}
+#login-box .form{
+	float: right;
+    overflow: hidden;
+    border: 1px #ddd solid;
+    padding: 20px 40px;
+    width: 300px;
+    min-height: 358px;
+    height: auto;
+    position: relative;
+    box-shadow: #ccc 0px 0px 5px;
+}
+#login-box .form .item{
+	overflow: hidden;
+	position: relative;
+}
+#login-box .form .label{
+	font-size: 14px;
+	color: #666;
+	padding-right: 10px;
+	height: 30px;
+	line-height: 30px;
+	display: inline-block;
+}
+#login-box .form .text{
+	width:288px;
+	height: 16px;
+    padding: 10px 5px 10px 5px;
+    border: 1px solid #cccccc;
+    font-size: 12px;
+    font-family: arial;
+    color: #999;
+}
+#login-box .form #safe-item{
+	height:45px;
+}
+#login-box .form .safety{
+	margin-top: 10px;
+	height: 30px;
+	line-height: 30px;
+}
+#login-box .form #loginsubmit{
+	width: 300px;
+	height: 35px;
+	font-size: 14px;
+	color: #FFF;
+	background: #E4393C;
+	text-align: center;
+	line-height: 35px;
+	text-decoration: none;
+	cursor: pointer;
+	letter-spacing: 2px;
+	border: none;
+	margin-bottom: 20px;
+}
+.item ul{
+	width:300px;
+	overflow: hidden;
+	padding-left:10px;
+}
+.item ul li{
+	list-style: none;
+	float: left;
+	width:72px;
+}
+.item ul li a{
+	color: #666666;
+	text-decoration: none;
+}
+.item ul li a:hover{
+	color: #e4393c;
+}
+.item ul li a i {
+	margin-right:3px;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../img/login.png) no-repeat;
+}
+.item ul li a .weixin {
+	background-position: -170px -40px;
+}
+.item ul li a .qq {
+    background-position: -9px -40px;
+}
+.item ul li a i.weibo {
+    background-position: -62px -40px;
+}
+.item ul li a i.alipay {
+    background-position: -123px -40px;
+}
+.safety .safe_a{
+	float:none;
+	color: blue;
+}
+/*.reg-box #reg-form .form .item .label{
+	/*display: none;*/
+	visibility: hidden;
+}*/
+.reg-box #reg-form .form{
+	
+	box-shadow:none;
+}
+
+.register_tab {
+    right: 46px;
+    top: 70px;
+    z-index: 99;
+    font-size: 14px;
+    width: 382px;
+    height: 31px;
+    margin-left: 3px;
+   
+}
+.register_tab li.cur {
+    background: #fff;
+    color: #e4393e;
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    height: 31px;
+    line-height: 31px;
+    margin-top: 0;
+    width: 130px;
+	cursor: pointer;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	margin: 5px 5px 0 0;
+}
+#regist i {
+    position: absolute;
+    right: 8px;
+    background: url(../img/register.png) no-repeat scroll 0 0;
+    height: 19px;
+    top: 10px;
+    width: 14px;
+    left: 10px;
+}
+#regist i {
+   
+    background-position: -1px -25px;
+}
+#regist .i-user{
+	background-position: 0px -75px;
+}
+#regist #login-box .form .text {
+    padding-left: 33px;
+    width:260px;
+}

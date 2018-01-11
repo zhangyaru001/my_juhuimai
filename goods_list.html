@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品列表</title>
+		<link href="css/com.css" type="text/css" rel="stylesheet" />
+		<link href="css/ht_com.css" type="text/css" rel="stylesheet" />
+		<link href="css/index.css" type="text/css" rel="stylesheet" />
+		<link href="css/goods_detail.css" type="text/css" rel="stylesheet"/>
+		<link href="css/good_list.css" type="text/css" rel="stylesheet" />
+		<style>
+			.all_cat{
+				margin-top:35px;
+			}
+			.all_w0{
+				display:none;
+			}
+			#li_0,#li_4,#li_8,#li_12,#li_16,#li_24,#li_20{
+				margin-left: 0;
+			}
+		</style>
+		
+		<script src="libs/jquery-1.11.3.js"></script>
+		<script src="js/ajax.js"></script>
+		<script src="js/all_list.js"></script>
+		<script src="libs/jquery.cookie.js"></script>
+		<script src="js/r_text.js"></script>
+		<script type="text/javascript" src="js/shopping_car.js" ></script>
+		<script>
+		
+		$(function(){
+			
+	
+			//顶部导入
+			$(".top_box").load("text.html #site-nav", function() {
+		
+				//顶部导航菜单设置
+				$(".sn-menu li").mouseover(function() {
+					//alert(1)   cs ww
+					//console.log($(this).find("b"))
+					$(this).find("b").stop().animate({
+						"background-position-y": "-10px", //改变b标签的背景
+					})
+		
+					$(this).find(".menu-bd").css("display", "block");
+				})
+				
+				$(".sn-menu li").mouseout(function() {
+		
+					$(this).find("b").stop().animate({
+						"background-position-y": "0px",
+					})
+					$(this).find(".menu-bd").css("display", "none");
+				})   
+					
+					
+				var em0 = $.cookie("UserName");
+				
+				$(".em0").html(em0);
+					//alert($(".em0").html())
+					
+			});
+			
+			//头部导入
+			 	$(".head_box").load("text.html #header");
+ 			 	$(".headnav_box").load("text.html .globa-nav",function(){
+ 			 		
+ 			 		$(".fenlei").load("text.html .all_w0",function(){
+ 			 			$(".all_cat a").attr("href","goods_list.html");
+ 			 		});
+ 			 		
+					$(".allGoodsCat").mouseover(function(){
+						$(".all_w0").css("display","block");
+						all_cat();
+					})
+					$(".allGoodsCat").mouseout(function(){
+						$(".all_w0").css("display","none");
+						
+					})	
+ 			 	});
+ 			 	
+ 			 	//左侧商品分类
+ 			 	$(".item").click(function(){
+ 			 		
+ 			 		if($(this).hasClass("current")){         //判断class名是否存在
+						 $(this).removeClass("current"); //存在，删除class
+					}else{
+						$(this).addClass("current");   //不存在，添加class
+					}
+
+ 			 	})
+			
+			//销量排行榜
+				$("#top2s1").mouseover(function(){
+					
+					$(this).css("display","none");
+					$("#top2b1").css("display","block");
+					$("#top2b2").css("display","none");
+					$("#top2s2").css("display","block");
+				})
+				
+				$("#top2s2").mouseover(function(){
+
+					$("#top2b2").css("display","block");
+					$("#top2b1").css("display","none");
+					$("#top2s1").css("display","block");
+					$(this).css("display","none");
+				})
+			
+			
+			//底部导入
+				$(".foot_box").load("text.html .site-footer");
+				
+				
+			//商品列表
+			var index2 = 0;
+			var $tab = $(".list_pic").eq(0);
+			ajax2("data/goods_list.json",16);
+
+			$("#pager .numbers").click(function(){
+
+				if($(this).index()==2){
+					index2 = 1;
+				}else{
+					
+					index2 = $(this).index();
+				}	
+				$("#pager .numbers").attr("class","numbers");
+					
+				$("#pager .numbers").eq(index2).addClass("current");
+					//alert(index1)
+				
+				ajax2("data/goods_list.json",16);	
+				
+			})
+			function ajax2(json,num){
+				
+			  	$.ajax({							 //ajax调用
+					type:"get",
+					url:json,
+					dataType: "json", 
+					success:function(str){         //ajax调用
+				  		var a = eval(str);
+				  		var html2 = "";
+			  		
+				  	 for(var i = index2*num;i< (index2+1)*num;i++){
+				  	 	if(i<a.length){
+						 //console.log(a[i].name);
+
+				            html2 +='<li id="li_'+i+'" class="item"><div class="goods-content"'+
+				            'style="position:relative" id="'+a[i].id+'"><div class="goods-pic"><a><img src="'+a[i].url+'"style="display: inline;"/>'
+				            +'</a></div><div class="goods-info"><div class="goods-name"><a href="#">'+a[i].name
+				            +'<em></em></a></div><div class="goods-price"><em class="sale-price">'+a[i].price+'</em>'
+				            +'<em class="market-price">'+a[i].del+'</em></div><div class="sell-stat"><ul><li>'
+				            +'<a class="status" href="#">0</a><p>商品销量</p></li><li><a href="#">0</a><p>用户评论</p></li>'
+				            +'<li><a class="chat chat_offline" href="#">'+a[i].renqi+'</a><p>关注人气</p></li></ul>'
+				            +'</div><div class="store"><a class="collet-btn"></a><a class="compare-btn shop-compare"></a>'
+				            +'</div><div class="add-cart"><a href="#"><i class="icon-shopping-cart"></i>加入购物车</a></div></div></div></li>';
+				  	    }
+				  	}
+		          $tab.html(html2) ;
+		          	
+		          	//商品详情页跳转
+						$(".goods-content").click(function(){
+							
+							//alert(this.id)   //cs ww
+							$.cookie('buyId',this.id);
+
+        					window.location.href = "Goods_detail.html"
+						})
+		          
+		         }
+			  	});
+			}	
+			
+			//右侧栏导入
+			$(".car_nav").load("text.html .sidebar-nav",function(){
+
+				r_nav();
+				sc_car();
+				shmag();
+			});
+				
+		})
+		</script>
+	</head>
+	<body>
+		
+		<!--头部引入-->
+		<div class="top_box"></div><div class="head_box"></div><div class="headnav_box"></div>
+		
+		<!--页面位置导航-->
+		<div class="w0" style="margin-top:10px;margin-bottom: 10px;">
+			<div class="breadcrumb">
+				<i style=" background:url(img/user_header.png) no-repeat;
+					background-position: -427px -208px;"></i>
+				<a href="index.html">首页</a><code>></code>
+				<a href="index.html">食品生鲜</a><code>></code>
+				<a href="index.html">进口水果</a><code>></code>
+			</div>
+		</div>
+		<div class="blank"></div>
+		
+		<!--商品列表页-->
+		<div class="w0 main" style="overflow: hidden;">
+			<div id="i-right" class="m">
+				<div id="hotsale" class="hot-sales-main">
+					<div class="hd" style="background-position: -75px -150px;">热门推荐</div>
+					<div class="mc list-h">
+						<dl>
+							<dt>
+								<a href="#">
+									<img src="img/20_thumb_G_1453153172314.jpg" width="100" height="100"/>
+								</a>
+							</dt>
+							<dd>
+								<div class="p-name">
+									<a href="#">佳沛新西兰阳光金奇异果12个/进口猕猴桃...</a>
+								</div>
+								<div class="p-price">特价：
+									<font class="shop_price" style="font-size:14px; color:#DD0000; font-weight:bold;">88.0</font>
+								</div>
+								<div class="btns"><a href="#">查看详情</a></div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="#">
+									<img src="img/11_thumb_G_1453146671846.jpg" width="100" height="100"/>
+								</a>
+							</dt>
+							<dd>
+								<div class="p-name">
+									<a href="#">七果果 越南白心火龙果1斤【3斤起拍，只...</a>
+								</div>
+								<div class="p-price">特价：
+									<font class="shop_price" style="font-size:14px; color:#DD0000; font-weight:bold;">30.0</font>
+								</div>
+								<div class="btns"><a href="#">查看详情</a></div>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<a href="#">
+									<img src="img/14_thumb_G_1453141980056.jpg" width="100" height="100"/>
+								</a>
+							</dt>
+							<dd>
+								<div class="p-name">
+									<a href="#">哥伦比亚金燕窝果 新鲜进口水果 麒麟果 ...</a>
+								</div>
+								<div class="p-price">特价：
+									<font class="shop_price" style="font-size:14px; color:#DD0000; font-weight:bold;">479.0</font>
+								</div>
+								<div class="btns"><a href="#">查看详情</a></div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div id="market" class="hot-sales-act">
+					<div class="hd" style="background-position: -75px -150px;">促销活动</div>
+					<div class="mc">
+						<ul>
+							<li>
+								<a href="#">[礼包]</a>
+								<a href="#" style="background:none; padding-left:0px;">厨房电器优惠套餐</a>
+							</li>
+							<li>
+								<a href="#">[礼包]</a>
+								<a href="#" style="background:none; padding-left:0px;">家用电器超值礼包</a>
+							</li>
+							<li>
+								<a href="#">[礼包]</a>
+								<a href="#" style="background:none; padding-left:0px;">数码超值搭配套餐</a>
+							</li>
+							<li>
+								<a href="#">[礼包]</a>
+								<a href="#" style="background:none; padding-left:0px;">婴儿超值大礼包</a>
+							</li>
+							<li>
+								<a href="#">[礼包]</a>
+								<a href="#" style="background:none; padding-left:0px;">佳沛新西兰绿奇异果36个（原装）进口Zespri猕猴桃 新鲜水果准妈妈爱吃</a>
+							</li>
+							<li>
+								<a href="#">[礼包]</a>
+								<a href="#" style="background:none; padding-left:0px;">进口 新鲜水果 车厘子1000g</a>
+							</li>
+							<li>
+								<a href="#">[礼包]</a>
+								<a href="#" style="background:none; padding-left:0px;">[自营商品]热卖手机满10000减2000</a>
+							</li>
+						</ul>
+					</div>
+				
+				
+				</div>
+			
+			</div>
+			
+			<form name="theForm">
+				<div class="box_attr_ecshop68" id="attr_list_ul">
+					<h4 id="xxxccczzz"><font color="#E31939">进口水果 - </font> 商品筛选</h4>
+					<dl>
+						<dt>价格：</dt>
+						<dd class="moredd">&nbsp;</dd>
+						<dd>
+							<ul>
+								<li><a href="#">10 - 110</a></li>
+								<li><a href="#">110 - 210</a></li>
+								<li><a href="#">210 - 310</a></li>
+								<li><a href="#">310 - 410</a></li>
+								<li><a href="#">410 - 510</a></li>
+								<li>
+									<input name="price_min" id="price_min" value="0" class="price_68ecshop" type="text"/>
+									<i></i>
+									<input name="price_max" id="price_max" value="0" class="price_68ecshop" type="text"/>
+									<a class="button_jd">确定</a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</form>
+		
+			<div class="right-extra">
+				<div class="box">
+					<div id="filter">
+						<form name="listform">
+							<div class="fore1" style="border:none;">
+								<dl class="order">
+									<dt>排序：</dt>
+									<dd>
+										<a href="#">上架<b class="icon-order-DESCending"></b></a>
+									</dd>
+									<dd>
+										<a href="#">销量<b class="icon-order-DESCending"></b></a>
+									</dd>
+									<dd>
+										<a href="#">价格<b class="icon-order-DESCending"></b></a>
+									</dd>
+									<dd class="curr">
+										<a href="#">更新<b class="icon-order-ASCending"></b></a>
+									</dd>
+									<dd>
+										<a href="#">人气<b class="icon-order-DESCending"></b></a>
+									</dd>
+								</dl>
+								<div class="pagin pagin-m">
+									<span class="text"><font>1</font>/2</span>
+									<span class="prev-disabled"><</span>
+									<a class="next">></a>
+								</div>
+								<div class="total">
+									<span>共<strong>25</strong>个商品</span>
+								</div>
+								<div style="height:0px; line-height:0px; clear:both;"></div>
+							</div>
+							<div class="fore1 fore3">
+								<dl class="order goods_number">
+									<dt></dt>
+									<dd><a href="#">仅显示有货</a></dd>
+									<dd class="leixing">
+										<a href="#" style="float:left;color:red">全部</a>
+										<a href="#" style="float:left;">网站自营</a>
+										<a href="#" style="float:left;">入驻商店铺</a>
+									</dd>
+								</dl>
+							</div>
+						</form>
+					</div>
+					<form name="compareForm">
+						<div class="squares">
+							<ul class="list_pic">
+								<li id="li_1" class="item" style="margin-left:0px;">
+									<div class="goods-content" style="position:relative">
+										<div class="goods-pic">
+											<a href="#"><img src="img/5_thumb_G_1437502904492.jpg" style="display: inline;"/></a>
+										</div>
+										<div class="goods-info">
+											<div class="goods-name">
+												<a href="#">半壳扇贝 扇贝肉 1000g/新鲜扇贝冷冻烧烤海鲜<em></em></a>
+											</div>
+											<div class="goods-price">
+												<em class="sale-price">58.0</em>
+												<em class="market-price">65.0</em>
+											</div>
+											<div class="sell-stat">
+												<ul>
+													<li>
+														<a class="status" href="#">0</a>
+														<p>商品销量</p>
+													</li>
+													<li>
+														<a href="#">0</a>
+														<p>用户评论</p>
+													</li>
+													<li>
+														<a class="chat chat_offline" href="#">199</a>
+														<p>关注人气</p>
+													</li>
+												</ul>
+											</div>
+											<div class="store">
+												<a class="collet-btn"></a>
+												<a class="compare-btn shop-compare"></a>
+											</div>
+											<div class="add-cart">
+												<a href="#"><i class="icon-shopping-cart"></i>加入购物车</a>
+											</div>
+										</div>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</form>
+				</div>
+				<div class="blank5"></div>
+				<a class="compareHolder" href="#">对比栏</a>
+				<form name="selectPageForm">
+					<div id="pager">
+						<div class="xm-pagenavi">
+							<a class="numbers current">1</a>
+							<a class="numbers">2</a>
+							<a class="numbers last iconfont" >></a>
+						</div>
+					</div>
+				</form>
+			</div>		
+			
+			<div class="left">
+				<div id="sortlist" class="m">
+					<div id="cate" class="mc">
+						<div class="item">
+							<h3><b></b>保健食品</h3>
+							<ul></ul>
+						</div>
+						<div class="item current">
+							<h3><b></b>进口水果</h3>
+							<ul>
+								<li><a href="#">奇异果猕猴桃</a></li>
+								<li><a href="#">释迦芭乐</a></li>
+								<li><a href="#">凤梨蓝莓</a></li>
+								<li><a href="#">樱桃车厘子</a></li>
+								<li><a href="#">榴莲山竹</a></li>
+								<li><a href="#">芒果桃李</a></li>
+								<li><a href="#">龙眼荔枝</a></li>
+								<li><a href="#">小波</a></li>
+							</ul>
+						</div>
+						<div class="item">
+							<h3><b></b>糖果巧克力</h3>
+							<ul>
+								<li><a href="#">果冻</a></li>
+								<li><a href="#">口香糖</a></li>
+								<li><a href="#">棒棒糖</a></li>
+								<li><a href="#">软糖</a></li>
+								<li><a href="#">奶糖</a></li>
+								<li><a href="#">QQ糖</a></li>
+								<li><a href="#">巧克力</a></li>
+							</ul>
+						</div>
+						<div class="item">
+							<h3><b></b>牛奶乳品</h3>
+							<ul>
+								<li><a href="#">豆奶</a></li>
+								<li><a href="#">低脂奶</a></li>
+								<li><a href="#">常温奶</a></li>
+								<li><a href="#">全脂奶</a></li>
+								<li><a href="#">乳饮料</a></li>
+								<li><a href="#">成人奶粉</a></li>
+								<li><a href="#">儿童奶</a></li>
+								<li><a href="#">酸奶</a></li>
+							</ul>
+						</div>
+						<div class="item">
+							<h3><b></b>坚果炒货</h3>
+							<ul>
+								<li><a href="#">花生</a></li>
+								<li><a href="#">夏威夷果</a></li>
+								<li><a href="#">杏仁</a></li>
+								<li><a href="#">碧根果</a></li>
+								<li><a href="#">开心果</a></li>
+								<li><a href="#">腰果</a></li>
+								<li><a href="#">瓜子</a></li>
+								<li><a href="#">核桃</a></li>
+							</ul>
+						</div>
+						<div class="item">
+							<h3><b></b>蜜饯果干</h3>
+							<ul>
+								<li><a href="#">香蕉干</a></li>
+								<li><a href="#">山楂片</a></li>
+								<li><a href="#">红枣</a></li>
+								<li><a href="#">橄榄</a></li>
+								<li><a href="#">莓类</a></li>
+								<li><a href="#">其他</a></li>
+								<li><a href="#">葡萄干</a></li>
+								<li><a href="#">芒果干</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="limitbuy537" class="m limitbuy">
+					<div class="mt">
+						<h2>新品推荐</h2>
+					</div>
+					<div class="mc">
+						<div id="clock537" class="clock">
+							<ul>
+								<li class="fore1">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/20_thumb_G_1453153172314.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">佳沛新西兰阳光金奇异果12个/进口猕猴桃/新鲜水果</a>
+									</div>
+									<div class="p-price">
+										<strong>88.0</strong>
+										<del>95.0</del>
+									</div>
+								</li>
+								<div class="blank5"></div>
+								<li class="fore2">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/11_thumb_G_1453146671846.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">七果果 越南白心火龙果1斤【3斤起拍，只多不少】 毁包赔 进口新鲜水果 堪比红心火龙果</a>
+									</div>
+									<div class="p-price">
+										<strong>30.0</strong>
+										<del>36.0</del>
+									</div>
+								</li>
+								<div class="blank5"></div>
+								
+								<li class="fore3">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/14_thumb_G_1453141980056.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">哥伦比亚金燕窝果 新鲜进口水果 麒麟果 黄色白心火龙果 4只</a>
+									</div>
+									<div class="p-price">
+										<strong>479.0</strong>
+										<del>500.0</del>
+									</div>
+								</li>
+								<div class="blank5"></div>
+								<li class="fore4">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/2643_thumb_G_1453051289358.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">南非进口红西柚葡萄柚 新鲜水果 酸爽味苦回甘</a>
+									</div>
+									<div class="p-price">
+										<strong>47.0</strong>
+										<del>56.4</del>
+									</div>
+								</li>
+								<div class="blank5"></div>
+								<li class="fore5">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/2644_thumb_G_1453052042594.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">4斤装泰国进口龙眼 去枝 小核新鲜桂圆水果湿桂圆</a>
+									</div>
+									<div class="p-price">
+										<strong>39.5</strong>
+										<del>47.4</del>
+									</div>
+								</li>
+								<div class="blank5"></div>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="limitbuy537" class="m limitbuy">
+					<div class="mt">
+						<h2>热卖商品</h2>
+					</div>
+					<div class="mc">
+						<div id="clock537" class="clock">
+							<ul>
+								
+								<li class="fore1">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/2643_thumb_G_1453051289358.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">南非进口红西柚葡萄柚 新鲜水果 酸爽味苦回甘</a>
+									</div>
+									<div class="p-price">
+										<strong>47.0</strong>
+										<del>56.4</del>
+									</div>
+								</li>
+								<div class="blank5"></div>
+								<li class="fore2">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/2644_thumb_G_1453052042594.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">4斤装泰国进口龙眼 去枝 小核新鲜桂圆水果湿桂圆</a>
+									</div>
+									<div class="p-price">
+										<strong>39.5</strong>
+										<del>47.4</del>
+									</div>
+								</li>
+								<div class="blank5"></div>
+								<li class="fore3">
+									<div class="p-img">
+										<a href="#">
+											<img src="img/2645_thumb_G_1453053185435.jpg" style="display: inline;" width="100" height="100"/>
+										</a>
+									</div>
+									<div class="rate">
+										<a href="#">泰国新鲜甜酸角 进口新鲜水果罗望子甜角</a>
+									</div>
+									<div class="p-price">
+										<strong>53.3</strong>
+										<del>63.9</del>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div id="weekRank" class="m rank">
+					<div class="mt">
+						<h2>销量排行榜</h2>
+					</div>
+					<div class="mc">
+						<div id="clock537" class="clock">
+							<ul class="tabcon">
+								
+								<li class="fore1 fore" id="top2b1">
+									<span>1</span>
+									<div class="p-img">
+										<a href="#">
+											<img src="img/2708_thumb_G_1458596238415.jpg"  width="50" height="50"/>
+										</a>
+									</div>
+									<div class="p-name">
+										<a href="#">康婷瑞倪维儿活肤营养水80ml</a>
+									</div>
+									<div class="price" style="color:#DD0000">97.0</div>
+								</li>
+								
+								<li class="fore1" id="top2s1" style="display:none">
+									<span>1</span>
+				
+									<div class="p-name">
+										<a href="#">康婷瑞倪维儿活肤营养水80ml</a>
+									</div>
+									<div class="price" style="color:#DD0000">97.0</div>
+								</li>
+								
+								<li class="fore1 fore" id="top2b2" style="display: none;">
+									<span>2</span>
+									<div class="p-img">
+										<a href="#">
+											<img src="img/147_thumb_G_1452897883992.jpg"  width="50" height="50"/>
+										</a>
+									</div>
+									<div class="p-name">
+										<a href="#">Huawei/华为 荣耀6 Plus高配版 移动...</a>
+									</div>
+									<div class="price" style="color:#DD0000"> 1899.0 </div>
+								</li>
+								
+								<li class="fore1" id="top2s2">
+									<span>2</span>
+				
+									<div class="p-name">
+										<a href="#">Huawei/华为 荣耀6 Plus高配版 移动...</a>
+									</div>
+									<div class="price" style="color:#DD0000">97.0</div>
+								</li>
+							</ul>
+						</div>	
+					</div>		
+				</div>
+			</div>
+		
+		</div>
+		
+		
+		<!--底部引入-->
+		<div class="foot_box"></div>
+	
+		<!--右侧栏-->
+		<div class="car_nav"></div>
+	</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/login.css" type="text/css" rel="stylesheet"/>
+		<link href="css/com.css" type="text/css" rel="stylesheet"/>
+		<link href="css/ht_com.css" type="text/css" rel="stylesheet"/>
+		<script src="libs/jquery-1.11.3.js"></script>
+		<script src="libs/jquery.cookie.js"></script>
+		
+		<script>
+			$(function(){
+				
+	            $(".re_foot").load("text.html #site-footer");
+	
+	        })
+			
+		</script>
+		<!--注册：-->
+		<script>
+		
+			var arr1=[],arr2=[];
+			
+			$(function(){
+				
+				var flag=false;
+				$("#username").focus(function(){
+					
+					$("#user-notice").html("字母或下划线开头,3<=长度<15").css("color","#666");
+				
+				})
+				
+				$("#username").blur(function(){
+
+						if(/^[a-zA-Z_]\w{2,14}$/.test($("#username").val())){			//用户名验证
+							var id = $("#username").val();
+							
+							$("#user-notice").html("").css("color","rgb(153, 0, 0)");
+							flag = true;
+
+						}else{
+							$("#user-notice").html("- 用户名格式错误!").css("color","rgb(153, 0, 0)");
+							flag = false;
+						}
+					
+ 	
+				})
+				
+				$("#password1").focus(function(){											
+					
+					$("#password-notice1").html("密码必须含有数字和字母以及标点符号").css("color","#666");
+				
+				})
+				
+				$("#password1").blur(function(){	//密码验证
+				
+					if(/[a-zA-Z]/.test($("#password1").val()) && /['".,:;/]/.test($("#password1").val())
+							&& /[0-9]/.test($("#password1").val())&& $("#password1").val()!=""){
+						
+						
+						$("#password-notice1").html("密码输入合法").css("color","rgb(153, 0, 0)");
+						flag = true;
+						
+					}else{
+						
+						$("#password-notice1").html("- 密码格式错误!").css("color","rgb(153, 0, 0)");
+						flag = false;
+					}	
+				})
+				$("#password2").blur(function(){				//确认密码
+					
+					if($("#password2").val()!="" && $("#password2").val()==$("#password1").val()){
+						$("#password-notice2").html(" ");
+						
+						flag=true;
+					}else{
+						$("#password-notice2").html("密码输入不一致，请重新输入");
+						
+						flag=false;
+					}
+				})
+				
+				//console.log( $("#checkbox").prop("checked"));   cs ww
+				
+					$("#loginsubmit").click(function(){					//提交注册
+						
+						//alert($("#checkbox").prop("checked"))   cs ww
+						
+						if(flag==true){
+							if($(".checkbox").prop("checked")){		//确认同意用户协议
+								
+																		//存储用户名和密码
+								var id = $("#username").val();
+								var password = $("#password2").val();
+								
+								$.ajax({
+									url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+									type:"POST",
+									data:{
+										status:"register",
+										userID:id,
+										password:password
+									},
+									success:function(res){
+										//console.log(typeof res)
+										//console.log(res);
+										switch(res){
+											case "0":alert('用户名已经存在！');break;
+											case "1":{alert('恭喜，注册成功了！');
+													window.location.href="login.html";		//跳转到登录页面
+													break;}
+											case "2":alert('系统出现故障，请稍后重试');break;
+						
+										}
+									}
+								})
+								//window.location.href="login.html";		//跳转到登录页面
+							}else{
+								
+								alert("您没有同意用户协议！！！");
+							}		
+						}else{
+								
+							alert("请填入正确的信息！");
+						}
+
+					})	
+			})
+			
+		</script>
+	</head>
+	
+	<body>
+		<div class="Logo-r">
+			<div class="Logo-info-r">
+				<a href="#" class="logo"></a>
+				<span class="findpw">欢迎注册</span>
+				<a href="#" class="qq"></a>
+				<a href="#" class="sina"></a>
+				<a href="#" class="weixin"></a>
+			</div>
+		</div>
+		<div class="w" id="regist">
+			<div class="mcon">
+				<div id="reg-pic" style="left:0"></div>
+				<div id="login-box"  class="reg-box" style="right:0">
+					<form id="reg-form" >
+						<h2 style="width: 85px; float: right;">
+							<span>已有账号！ <a href="login.html"> 登录</a></span>
+						</h2>
+						<ul class="register_tab">
+							<li class="tab_item cur">用户名注册
+								<span class="bg_ff"></span>
+							</li>
+						</ul>
+						<div class="form"  style="padding-top:30px; min-height: 342px;">
+							
+							<div class="item">
+								<input id="username" name="username" class="text"  
+									placeholder="请输入用户名" type="text"><i class="i-user"></i>
+									<div>
+										<span id="user-notice" class="label" style="color: rgb(153, 0, 0); font-size:12px;">
+											<!---用户名不能为空-->
+										</span>
+									</div>
+							</div>
+			
+							<div class="item">
+								<input id="password1" name="password" class="text"  
+									placeholder="请输入密码" type="password"><i class="i-pass"></i>
+									<div>
+										<span id="password-notice1" class="label" style="color: rgb(153, 0, 0); font-size:12px;"><!--- 登录密码不能少于 6 个字符。--></span>
+									</div>
+							</div>
+							<div class="item">
+								<input id="password2" name="password" class="text"  
+									placeholder="确认密码" type="password"><i class="i-pass"></i>
+									<div>
+										<span id="password-notice2" class="label" style="color: rgb(153, 0, 0); font-size:12px;"><!--- 两次密码输入不一致。--></span>
+									</div>
+							</div>
+							
+							<div class="item" id="safe-item">
+								<div class="safety">
+									<input class="checkbox" type="checkbox" id="checkbox"/>
+									<label class="mar-b" for="checkbox">我已看过并接受《<a href="#" class="safe_a">用户协议</a>》</label>
+								</div>
+							</div>
+							<div class="item">
+								<input class="btn-img" id="loginsubmit" value="立即注册" type="button"/>
+							</div>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="re_foot">
+			
+		</div>
+	</body>
+</html>

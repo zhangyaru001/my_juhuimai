@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/login.css" type="text/css" rel="stylesheet"/>
+		<link href="css/com.css" type="text/css" rel="stylesheet"/>
+		<link href="css/ht_com.css" type="text/css" rel="stylesheet"/>
+		<script src="libs/jquery-1.11.3.js"></script>
+		<script src="libs/jquery.cookie.js"></script>
+		
+		<script>
+			$(function(){
+				
+				//左边图片跳入
+				
+				$("#reg-pic").stop().animate({
+					
+					"left":"0px"
+				},1000)
+				
+				//登录表单跳入
+				$("#login-box").stop().animate({
+					
+					"right":"0px"
+				},1000)
+				
+				//导入底部
+	            $(".login_footer").load("text.html #site-footer");
+	
+				$("#loginsubmit").click(function(){
+					
+					
+		        	var ID = $('#username').val();
+					var password = $('#password').val();
+					
+					//登录验证
+					$.ajax({
+						url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+						type:"POST",
+						data:{
+							status:"login",
+							userID:ID,
+							password:password
+						},
+						success:function(res){
+			
+							switch(res){
+								case "0":alert('用户名不存在');break;
+								case "2":alert('用户名密码不符');break;
+								default:
+										$.cookie("UserName",ID);
+//										alert($.cookie("UserName"));
+										alert('登录成功');
+										window.location.href="index.html";
+										break;
+							}
+						}
+	
+					})
+					
+				})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div class="Logo-r">
+			<div class="Logo-info-r">
+				<a href="#" class="logo"></a>
+				<span class="findpw">欢迎登录</span>
+				<a href="#" class="qq"></a>
+				<a href="#" class="sina"></a>
+				<a href="#" class="weixin"></a>
+			</div>
+		</div>
+		<div class="w">
+			<div class="mcon">
+				<div id="reg-pic"></div>
+				<div id="login-box">
+					<form>
+						<h2>
+							<span>还没有账号？<a href="register.html">立即注册</a></span>
+						</h2>
+						<div class="form">
+							<div class="item">
+								<span class="label">用户名：</span>
+								<input id="username" name="username" class="text"  
+									placeholder="请输入用户名" type="text">
+							</div>
+							<div class="item">
+								<span class="label">密   码：</span>
+								<input id="password" name="password" class="text"  
+									placeholder="请输入密码" type="password">
+							</div>
+							<div class="item" id="safe-item">
+								<div class="safety">
+									<input class="checkbox" type="checkbox"/>
+									<label class="mar-b">请保存我这次的登录信息。</label>
+									<a href="#" class="forget-password" style="color:#e4393c">忘记密码？</a>
+								</div>
+							</div>
+							<div class="item">
+								<input class="btn-img" id="loginsubmit" value="立即登录" type="button"/>
+							</div>
+							<div class="item">
+								<ul>
+									<li><a href="#"><i class="weixin"></i>  微信</a></li>
+									<li><a href="#"><i class="qq"></i>  QQ</a></li>
+									<li><a href="#"><i class="weibo"></i>  微博</a></li>
+									<li><a href="#"><i class="alipay"></i>  支付宝</a></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div class="login_footer"></div>
+	</body>
+</html>

@@ -1,0 +1,767 @@
+.blank {
+    height: 10px;
+    line-height: 10px;
+    clear: both;
+    visibility: hidden;
+}
+#i-right {
+    overflow: visible;
+    position: relative;
+    height: 156px;
+    background: #F5F5F5;
+}
+.m, .sm {
+    margin-bottom: 10px;
+}
+#hotsale {
+    float: left;
+    width: 950px;
+    height: 137px;
+    padding-top: 15px;
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 15px;
+}
+.hot-sales-main .hd {
+    width: 30px;
+    height: 60px;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    line-height: 18px;
+    padding: 20px 10px 0 5px;
+    font-size: 14px;
+    text-align: center;
+    font-family: "microsoft yahei";
+    color: #f60;
+    background: url(../img/common.png) no-repeat;
+}
+#hotsale .mc {
+    overflow: hidden;
+    width: 920px;
+    height: 124px;
+}
+#hotsale dl {
+    width: 264px;
+    overflow: hidden;
+    margin-right: 15px;
+    background: #ffffff;
+    padding: 10px;
+}
+.list-h li, .list-h dl {
+    float: left;
+}
+#hotsale dt {
+    float: left;
+    width: 100px;
+    margin-right: 10px;
+}
+#hotsale dd {
+    float: left;
+    width: 146px;
+}
+#hotsale .p-name {
+    height: 40px;
+    line-height: 20px;
+}
+#hotsale .p-price {
+    margin-top: 5px;
+}
+.p-price {
+    color: #999;
+}
+#hotsale .btns {
+    margin-top: 5px;
+}
+#hotsale .btns a:link, #hotsale .btns a:visited {
+    display: block;
+    width: 72px;
+    height: 25px;
+    background: #E4393C;
+    text-align: center;
+    line-height: 25px;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+#market {
+    float: right;
+    width: 178px;
+    height: 153px;
+}
+.hot-sales-act {
+    width: 200px;
+    height: 152px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-left: 50px;
+}
+.hot-sales-act .hd {
+    width: 30px;
+    height: 60px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 18px;
+    padding: 20px 10px 0 5px;
+    font-size: 14px;
+    text-align: center;
+    font-family: "microsoft yahei";
+    color: #f60;
+    background: url(../img/common.png) no-repeat;
+}
+#market .mc {
+    padding: 10px 10px 2px;
+    font-family: \5b8b\4f53;
+}
+#market li {
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+.box_attr_ecshop68 {
+    /*float: left;*/
+    width: 1210px;
+    text-align: left;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 45px;
+}
+.box_attr_ecshop68 h4 {
+    float: left;
+    width: 1208px;
+    text-align: left;
+    text-indent: 15px;
+    height: 35px;
+    line-height: 35px;
+    font-family: 微软雅黑;
+    font-size: 15px;
+    color: rgb(51, 51, 51);
+    font-weight: normal;
+    background: rgb(247, 247, 247);
+    border-left: 1px solid rgb(221, 221, 221);
+    border-right: 1px solid rgb(221, 221, 221);
+}
+font[Attributes Style] {
+    color: rgb(227, 25, 57);
+}
+.box_attr_ecshop68 dl {
+    float: left;
+    width: 1188px;
+    border-top: 1px dotted #ccc;
+    padding: 10px 10px 5px 10px;
+    margin: 0;
+    overflow: hidden;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+.box_attr_ecshop68 dl dt {
+    float: left;
+    width: 70px;
+    height: 16px;
+    text-align: right;
+    padding: 0px 5px 5px 0;
+    color: #666;
+    font-weight: bold;
+    overflow: hidden;
+}
+.box_attr_ecshop68 dl dd.moredd {
+    float: right;
+    text-align: left;
+    text-indent: 10px;
+    width: 110px;
+    padding: 0;
+}
+.box_attr_ecshop68 dl dd {
+    float: none;
+    padding: 0px 10px 0 0;
+    margin: 0;
+    overflow: hidden;
+}
+.box_attr_ecshop68 dl dd ul {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+.box_attr_ecshop68 dl dd ul li {
+    float: left;
+    padding: 0 10px 5px 0;
+    line-height: 18px;
+    white-space: nowrap;
+}
+.box_attr_ecshop68 dl dd ul li a {
+    color: #666;
+    text-decoration: none;
+}
+.button_jd {
+   
+    padding: 3px 9px 4px;
+    margin-top: 2px;
+    line-height: 14px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-top: 0;
+    background: #f7f7f7;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #333;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#f7f7f7), to(#f2f2f2));
+}
+.price_68ecshop {
+    float: left;
+    width: 50px;
+    height: 18px;
+    line-height: 18px;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    color: #999999;
+    padding: 0px 5px;
+}
+.right-extra {
+    float: right;
+    width: 990px;
+}
+#filter {
+    border: 1px solid #e7e3e7;
+    background: #F7F7F7;
+    box-shadow: 0 1px 1px rgba(0,0,0,.02);
+}
+#filter .fore1 {
+    overflow: hidden;
+    height: 26px;
+    padding: 5px 15px;
+    zoom: 1;
+    background: #f1f1f1;
+}
+#filter dl, #filter dt, #filter dd {
+    float: left;
+    line-height: 26px;
+    zoom: 1;
+}
+#filter .order dd {
+    height: 24px;
+    border: 1px solid #CECBCE;
+    background-position: 0 -73px;
+    background-repeat: repeat-x;
+    background-color: #fff;
+    margin-right: 5px;
+    line-height: 24px;
+    overflow: hidden;
+    zoom: 1;
+    position: relative;
+}
+#filter .order a {
+    display: block;
+    padding: 0 20px 0px 10px;
+    text-decoration: none;
+}
+#filter .order dd b.icon-order-DESCending {
+    background-position: -50px 0px;
+}
+#filter .order dd b {
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+    display: inline-block;
+}
+#filter .order dd b{
+    background: url(../img/common.png) no-repeat;
+}
+.left {
+    float: left;
+    width: 210px;
+}
+#filter .order dd.curr {
+    border: 1px solid #E4393C;
+    background: #E4393C;
+}
+#filter .order dd.curr a {
+    color: #fff;
+}
+#filter .order dd.curr b.icon-order-ASCending {
+    background-position: -75px -25px;
+}
+#filter .fore3 {
+    border-top: 1px solid #e7e3e7;
+    background: #f9f9f9;
+}
+#filter .goods_number dd {
+    border: 1px solid #E7E3E7;
+}
+#filter .goods_number a {
+    padding: 0 10px 0px 10px;
+}
+#filter .order dd.leixing {
+    border: none;
+    background: none;
+    padding-left: 10px;
+    margin-top: 3px;
+}
+#filter .goods_number a {
+    padding: 0 10px 0px 10px;
+}
+.squares .list_pic {
+    font-size: 0;
+    display: block;
+    width: 996px;
+    margin-left: -3px;
+}
+.squares .list_pic li {
+    font-size: 12px;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    width: 240px;
+    height: 382px;
+    margin: 22px 0 0 12px;
+}
+.squares .goods-content {
+    line-height: 18px;
+    background-color: #FFF;
+    width: 230px;
+    height: 382px;
+    margin: 3px auto;
+    border: solid 1px #F0F0F0;
+    border-radius: 2px;
+    position: relative;
+    z-index: 11;
+    overflow: hidden;
+    box-shadow: 0 0 3px rgba(153,153,153,0.1);
+    transition: border-color 0.4s ease-in-out 0s;
+}
+.squares .goods-pic {
+    background: #FFF;
+    width: 200px;
+    height: 200px;
+    padding: 13px 12px 0 14px;
+    margin: 0;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.squares .goods-pic a {
+    line-height: 0;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.squares .goods-pic img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: expression( 200-this.height/2);
+}
+.squares .goods-info {
+    width: 230px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 220px;
+}
+.squares .goods-name {
+    font-size: 12px;
+    line-height: 16px;
+    color: #999;
+    background-color: #FFF;
+    height: 34px;
+    display: block;
+    padding: 0 10px;
+    overflow: hidden;
+}
+.squares .goods-name em {
+    color: #F30;
+}
+.squares .goods-price {
+    font: 12px/20px Verdana;
+    color: #E31939;
+    background-color: #FFF;
+    white-space: nowrap;
+    display: block;
+    height: 20px;
+    padding: 5px 10px 10px;
+    overflow: hidden;
+}
+.squares .goods-price em.sale-price {
+    font-size: 16px;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 70px;
+    float: left;
+    overflow: hidden;
+}
+.squares .goods-price em.market-price {
+    color: #999;
+    text-decoration: line-through;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 50px;
+    float: left;
+    margin-left: 10px;
+    overflow: hidden;
+    font-weight: normal;
+}
+.squares .sell-stat {
+    width: 212px;
+    margin: 0 auto;
+    border-top: solid 1px #EEE;
+    overflow: hidden;
+}
+.squares .sell-stat ul {
+    font-size: 0;
+    width: 213px;
+    margin-left: -1px;
+}
+.squares .sell-stat ul li {
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-align: center;
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    padding: 5px;
+    margin: 0;
+    border-left: solid 1px #EEE;
+    overflow: hidden;
+}
+.squares .sell-stat ul li a.status {
+    color: #3388BB;
+}
+.squares .sell-stat ul li a {
+    font: 600 12px/20px Tahoma;
+    color: #B57C5B;
+}
+.squares .sell-stat ul li p {
+    line-height: 20px;
+    color: #999;
+    height: 20px;
+}
+.compare-btn, .collet-btn {
+    background: url(../img/common.png) no-repeat;
+}
+.squares .store {
+    line-height: 20px;
+    background-color: #F5F5F5;
+    text-align: center;
+    display: block;
+    height: 20px;
+    clear: both;
+    padding: 8px 0;
+    border-top: solid 1px #EEE;
+}
+.collet-btn {
+    float: right;
+    margin-right: 40px;
+    height: 21px;
+    overflow: hidden;
+    width: 58px;
+    background-position: 0px -200px;
+}
+.compare-btn {
+    float: left;
+    height: 21px;
+    margin-left: 35px;
+    overflow: hidden;
+    width: 58px;
+    background-position: 0px -75px;
+}
+.squares .store a {
+    display: inline-block;
+    cursor: pointer;
+}
+.squares .add-cart a {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 26px;
+    color: #ffffff;
+    text-shadow: -2px 0 0 rgba(0,0,0,0.05);
+    background-color: #E4393C;
+    text-align: center;
+    display: block;
+    height: 20px;
+    padding: 5px 0;
+}
+.squares .add-cart a i {
+    margin-right: 4px;
+}
+.squares .add-cart a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.squares li:hover .goods-content {
+    height: 412px;
+    margin: 0;
+    border: solid 4px #E4393C;
+    border-radius: 0;
+    box-shadow: 0px 4px 4px rgba(102,102,102,0.65);
+}
+.squares .goods-content:hover {
+    z-index: 12;
+}
+.squares .add-cart {
+    display: block;
+}
+.goods-info {
+    width: 200px;
+    margin: 5px auto 15px auto;
+}
+.compareHolder {
+    height: 66px;
+    line-height: 14px;
+    margin: 5px 0;
+    padding: 28px 4px 0;
+    position: fixed;
+    text-align: center;
+    text-decoration: none;
+    width: 17px;
+    right: 40px;
+    bottom: 150px;
+    cursor: pointer;
+    color: #666;
+    background: url(../img/compare-btn.png) no-repeat;
+}
+.xm-pagenavi {
+    padding: 30px 0px;
+    text-align: center;
+}
+.xm-pagenavi a.current {
+    color: #fff;
+    background: #E4393C;
+    border: 1px #E4393C solid;
+}
+.xm-pagenavi .numbers {
+    display: inline-block;
+    height: 18px;
+    padding: 8px 13px;
+    margin: 0px 2px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    vertical-align: middle;
+    color: #333;
+}
+.xm-pagenavi .first, .xm-pagenavi .last {
+    border: 1px #DFDFDF solid;
+    cursor: pointer;
+    color: #A5A5A5;
+}
+#sortlist {
+    border: 1px solid #ddd;
+}
+#sortlist .mc {
+    width: 208px;
+    margin-top: -1px;
+    background: #FFF;
+}
+#sortlist h3 {
+    height: 35px;
+    line-height: 35px;
+    background-color: #F9F9F9;
+    padding: 0 7px 0 10px;
+    border-bottom: #eee 1px solid;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+#sortlist b {
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin: 10px 8px 0 0;
+    
+    overflow: hidden;
+    cursor: pointer;
+}
+#sortlist b {
+    background: url(../img/common.png) no-repeat;
+    background-position: 6px -246px;
+}
+#sortlist .current b {
+    background-position: -11px -246px;
+}
+#sortlist .current ul {
+    display: block;
+}
+#sortlist ul {
+    overflow: hidden;
+    display: none;
+    padding: 6px 0;
+    zoom: 1;
+    padding-left: 30px;
+}
+#sortlist li {
+    width: 71px;
+    height: 18px;
+    line-height: 18px;
+    padding: 2px 0px 3px 0px;
+    overflow: hidden;
+    float: left;
+}
+#sortlist li a {
+    padding: 3px 5px;
+}
+.limitbuy .mt {
+    height: 31px;
+    padding-left: 8px;
+    background: #FAFAFA;
+    line-height: 31px;
+    border-bottom: 1px solid #ddd;
+}
+.m, .sm {
+    margin-bottom: 10px;
+}
+.m, .mt, .mc, .mb, .sm, .smt, .smc, .smb {
+    overflow: hidden;
+    zoom: 1;
+}
+.limitbuy {
+    border: 1px solid #ddd;
+}
+.mt h1, .mt h2 {
+    font-size: 14px;
+}
+.limitbuy .mc {
+    padding-bottom: 6px;
+}
+.limitbuy .clock {
+    text-align: center;
+    padding: 5px 0;
+}
+.limitbuy li {
+    padding: 0px;
+    text-align: center;
+    margin: 0 10px;
+}
+.limitbuy .p-img {
+    width: 189px;
+    margin: 3px 0;
+    position: relative;
+}
+.p-img {
+    padding: 5px 0;
+    overflow: hidden;
+}
+.p-img a {
+    text-decoration: none;
+}
+.limitbuy li .rate {
+    height: 35px;
+    overflow: hidden;
+}
+.limitbuy li .rate, .limitbuy li .p-price {
+    text-align: left;
+    margin: 2px 2px 0;
+}
+.p-price strong, .p-market strong {
+    color: #e4393c;
+}
+.limitbuy li .p-price del {
+    margin-left: 10px;
+}
+.blank5 {
+    height: 5px;
+    line-height: 5px;
+    overflow: hidden;
+    clear: both;
+}
+.rank .mt {
+    height: 31px;
+    padding-left: 8px;
+    background: #f7f7f7;
+    line-height: 31px;
+    border-bottom: 1px solid #ddd;
+}
+
+.rank .mt h2 {
+    font-weight: 400;
+}
+.rank .mc {
+    padding: 0 10px;
+}
+.rank .tabcon .fore {
+    padding: 10px 5px;
+    height: 56px;
+    border-top: 0;
+}
+.rank .tabcon li {
+    float: left;
+    width: 177px;
+    padding: 6px 5px;
+    overflow: hidden;
+    height: 22px;
+    line-height: 22px;
+}
+.rank .tabcon .fore1 span, .rank .tabcon .fore2 span, .rank .tabcon .fore3 span {
+    border: 1px solid #E4393C;
+    color: #E4393C;
+}
+.rank .tabcon span {
+    float: left;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #cdcdcd;
+    border-radius: 10px;
+    margin: 2px 3px 0 0;
+    text-align: center;
+    font: 400 12px/16px arial;
+    color: #cdcdcd;
+}
+.rank .tabcon .fore .p-img {
+    float: left;
+    margin-right: 5px;
+}
+.rank .tabcon .p-name {
+    float: left;
+    width: 156px;
+    height: 22px;
+    overflow: hidden;
+}
+.rank .tabcon .fore .p-name {
+    width: 100px;
+    height: 3em;
+    line-height: 1.5em;
+}
+.rank {
+    border: 1px solid #ddd;
+}
+#filter .total {
+    float: right;
+    height: 22px;
+    padding: 2px 15px 2px 0;
+    border-right: 1px solid #E7E3E7;
+    line-height: 22px;
+    font-family: verdana;
+    color: #E4393C;
+}
+#filter .total {
+    line-height: 22px;
+    font-family: verdana;
+    color: #E4393C;
+}
+#filter .pagin {
+    float: right;
+    height: 22px;
+    padding: 2px 0;
+    border-left: 1px solid #fff;
+}
+.pagin .text, .pagin .current {
+    border: none;
+    padding: 4px 11px;
+}
+.pagin .prev, .pagin .prev-disabled {
+    padding-left: 8px;
+}
